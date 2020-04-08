@@ -17,7 +17,7 @@ public class SkyrimMC {
 
     public static final String MODID = "skyrimmc";
     public static final String NAME = "SkyrimMC";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "0.0.3";
     public static final String MC_VERSION = "[1.12.2]";
 
     public static final CreativeTabs SKYRIMMC_TAB = new SkyrimMCTab();
