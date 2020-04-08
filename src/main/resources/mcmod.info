@@ -1,0 +1,16 @@
+[
+{
+  "modid": "skyrimmc",
+  "name": "SkyrimMC - Skyrim in Minecraft",
+  "description": "Bring Skyrim to Minecraft!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Horus125"],
+  "credits": "The Forge and FML guys, Runonstof, Reanu Keaves, Cheesuki, Fonta",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

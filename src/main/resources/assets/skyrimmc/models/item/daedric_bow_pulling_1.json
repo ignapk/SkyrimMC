@@ -1,0 +1,6 @@
+{
+    "parent": "skyrimmc:items/daedric_bow",
+    "textures": {
+        "layer0": "skyrimmc:items/daedric_bow_pulling_1"
+    }
+}

@@ -1,0 +1,171 @@
+# Blocks
+tile.skyrimmc.anvil.name=Anvil
+
+# Ores
+tile.skyrimmc.corundum_ore.name=Corundum Ore
+tile.skyrimmc.ebony_ore.name=Ebony Ore
+tile.skyrimmc.malachite_ore.name=Malachite Ore
+tile.skyrimmc.moonstone_ore.name=Moonstone Ore
+tile.skyrimmc.orichalcum_ore.name=Orichalcum Ore
+tile.skyrimmc.quicksilver_ore.name=Quicksilver Ore
+tile.skyrimmc.silver_ore.name=Silver Ore
+
+# Creative Tabs
+itemGroup.skyrimmc=SkyrimMC
+
+# Consumable
+item.skyrimmc.cabbage.name=Cabbage
+item.skyrimmc.carrot.name=Carrot
+item.skyrimmc.green_apple.name=Green Apple
+item.skyrimmc.sweet_roll.name=Sweet Roll
+item.skyrimmc.tomato.name=Tomato
+item.skyrimmc.venison.name=Venison
+
+# Drinkable
+item.skyrimmc.ale.name=Ale
+item.skyrimmc.skooma.name=Skooma
+item.skyrimmc.daedra_heart.name=Daedra Heart
+item.skyrimmc.leather_strips.name=Leather Strips
+item.skyrimmc.mammoth_snout.name=Mammoth Snout
+
+# Materials
+item.skyrimmc.ebony_ingot.name=Ebony Ingot
+item.skyrimmc.dwarven_metal_ingot.name=Dwarven Metal Ingot
+item.skyrimmc.steel_ingot.name=Steel Ingot
+item.skyrimmc.corundum_ingot.name=Corundum Ingot
+item.skyrimmc.malachite_ingot.name=Refined Malachite
+item.skyrimmc.moonstone_ingot.name=Refined Moonstone
+item.skyrimmc.orichalcum_ingot.name=Orichalcum Ingot
+item.skyrimmc.quicksilver_ingot.name=Quicksilver Ingot
+item.skyrimmc.silver_ingot.name=Silver Ingot
+
+# Weapons
+item.skyrimmc.ancient_nord_battleaxe.name=Ancient Nord Battleaxe
+item.skyrimmc.ancient_nord_greatsword.name=Ancient Nord Greatsword
+item.skyrimmc.ancient_nord_sword.name=Ancient Nord Sword
+item.skyrimmc.ancient_nord_waraxe.name=Ancient Nord Waraxe
+item.skyrimmc.daedric_battleaxe.name=Daedric Battleaxe
+item.skyrimmc.daedric_dagger.name=Daedric Dagger
+item.skyrimmc.daedric_greatsword.name=Daedric Greatsword
+item.skyrimmc.daedric_mace.name=Daedric Mace
+item.skyrimmc.daedric_sword.name=Daedric Sword
+item.skyrimmc.daedric_waraxe.name=Daedric Waraxe
+item.skyrimmc.daedric_warhammer.name=Daedric Warhammer
+item.skyrimmc.dragonbone_battleaxe.name=Dragonbone Battleaxe
+item.skyrimmc.dragonbone_dagger.name=Dragonbone Dagger
+item.skyrimmc.dragonbone_greatsword.name=Dragonbone Greatsword
+item.skyrimmc.dragonbone_mace.name=Dragonbone Mace
+item.skyrimmc.dragonbone_sword.name=Dragonbone Sword
+item.skyrimmc.dragonbone_waraxe.name=Dragonbone Waraxe
+item.skyrimmc.dragonbone_warhammer.name=Dragonbone Warhammer
+item.skyrimmc.dwarven_battleaxe.name=Dwarven Battleaxe
+item.skyrimmc.dwarven_dagger.name=Dwarven Dagger
+item.skyrimmc.dwarven_greatsword.name=Dwarven Greatsword
+item.skyrimmc.dwarven_mace.name=Dwarven Mace
+item.skyrimmc.dwarven_sword.name=Dwarven Sword
+item.skyrimmc.dwarven_waraxe.name=Dwarven Waraxe
+item.skyrimmc.dwarven_warhammer.name=Dwarven Warhammer
+item.skyrimmc.ebony_battleaxe.name=Ebony Battleaxe
+item.skyrimmc.ebony_dagger.name=Ebony Dagger
+item.skyrimmc.ebony_greatsword.name=Ebony Greatsword
+item.skyrimmc.ebony_mace.name=Ebony Mace
+item.skyrimmc.ebony_sword.name=Ebony Sword
+item.skyrimmc.ebony_waraxe.name=Ebony Waraxe
+item.skyrimmc.ebony_warhammer.name=Ebony Warhammer
+item.skyrimmc.elven_battleaxe.name=Elven Battleaxe
+item.skyrimmc.elven_dagger.name=Elven Dagger
+item.skyrimmc.elven_greatsword.name=Elven Greatsword
+item.skyrimmc.elven_mace.name=Elven Mace
+item.skyrimmc.elven_sword.name=Elven Sword
+item.skyrimmc.elven_waraxe.name=Elven Waraxe
+item.skyrimmc.elven_warhammer.name=Elven Warhammer
+item.skyrimmc.falmer_sword.name=Falmer Sword
+item.skyrimmc.falmer_waraxe.name=Falmer Waraxe
+item.skyrimmc.glass_battleaxe.name=Glass Battleaxe
+item.skyrimmc.glass_dagger.name=Glass Dagger
+item.skyrimmc.glass_greatsword.name=Glass Greatsword
+item.skyrimmc.glass_mace.name=Glass Mace
+item.skyrimmc.glass_sword.name=Glass Sword
+item.skyrimmc.glass_waraxe.name=Glass Waraxe
+item.skyrimmc.glass_warhammer.name=Glass Warhammer
+item.skyrimmc.imperial_sword.name=Imperial Sword
+item.skyrimmc.iron_battleaxe.name=Iron Battleaxe
+item.skyrimmc.iron_dagger.name=Iron Dagger
+item.skyrimmc.iron_greatsword.name=Iron Greatsword
+item.skyrimmc.iron_mace.name=Iron Mace
+item.skyrimmc.iron_sword.name=Iron Sword
+item.skyrimmc.iron_waraxe.name=Iron Waraxe
+item.skyrimmc.iron_warhammer.name=Iron Warhammer
+item.skyrimmc.orcish_battleaxe.name=Orcish Battleaxe
+item.skyrimmc.orcish_dagger.name=Orcish Dagger
+item.skyrimmc.orcish_greatsword.name=Orcish Greatsword
+item.skyrimmc.orcish_mace.name=Orcish Mace
+item.skyrimmc.orcish_sword.name=Orcish Sword
+item.skyrimmc.orcish_waraxe.name=Orcish Waraxe
+item.skyrimmc.orcish_warhammer.name=Orcish Warhammer
+item.skyrimmc.steel_battleaxe.name=Steel Battleaxe
+item.skyrimmc.steel_dagger.name=Steel Dagger
+item.skyrimmc.steel_greatsword.name=Steel Greatsword
+item.skyrimmc.steel_mace.name=Steel Mace
+item.skyrimmc.steel_sword.name=Steel Sword
+item.skyrimmc.steel_waraxe.name=Steel Waraxe
+item.skyrimmc.steel_warhammer.name=Steel Warhammer
+
+# Armor
+item.skyrimmc.stormcloak_helmet.name=Stormcloak Helmet
+item.skyrimmc.stormcloak_chestplate.name=Stormcloak Chestplate
+item.skyrimmc.stormcloak_leggins.name=Stormcloak Leggins
+item.skyrimmc.stormcloak_boots.name=Stormcloak Boots
+item.skyrimmc.orcish_helmet.name=Orcish Helmet
+item.skyrimmc.orcish_chestplate.name=Orcish Chestplate
+item.skyrimmc.orcish_leggins.name=Orcish Leggins
+item.skyrimmc.orcish_boots.name=Orcish Boots
+item.skyrimmc.iron_helmet.name=Iron Helmet
+item.skyrimmc.iron_chestplate.name=Iron Chestplate
+item.skyrimmc.iron_leggins.name=Iron Leggins
+item.skyrimmc.iron_boots.name=Iron Boots
+item.skyrimmc.ancient_nord_helmet.name=Ancient Nord Helmet
+item.skyrimmc.ancient_nord_chestplate.name=Ancient Nord Chestplate
+item.skyrimmc.ancient_nord_leggins.name=Ancient Nord Leggins
+item.skyrimmc.ancient_nord_boots.name=Ancient Nord Boots
+item.skyrimmc.glass_helmet.name=Glass Helmet
+item.skyrimmc.glass_chestplate.name=Glass Chestplate
+item.skyrimmc.glass_leggins.name=Glass Leggins
+item.skyrimmc.glass_boots.name=Glass Boots
+item.skyrimmc.imperial_helmet.name=Imperial Helmet
+item.skyrimmc.imperial_chestplate.name=Imperial Chestplate
+item.skyrimmc.imperial_leggins.name=Imperial Leggins
+item.skyrimmc.imperial_boots.name=Imperial Boots
+item.skyrimmc.daedric_helmet.name=Daedric Helmet
+item.skyrimmc.daedric_chestplate.name=Daedric Chestplate
+item.skyrimmc.daedric_leggins.name=Daedric Leggins
+item.skyrimmc.daedric_boots.name=Daedric Boots
+item.skyrimmc.dwarven_helmet.name=Dwarven Helmet
+item.skyrimmc.dwarven_chestplate.name=Dwarven Chestplate
+item.skyrimmc.dwarven_leggins.name=Dwarven Leggins
+item.skyrimmc.dwarven_boots.name=Dwarven Boots
+item.skyrimmc.ebony_helmet.name=Ebony Helmet
+item.skyrimmc.ebony_chestplate.name=Ebony Chestplate
+item.skyrimmc.ebony_leggins.name=Ebony Leggins
+item.skyrimmc.ebony_boots.name=Ebony Boots
+item.skyrimmc.elven_helmet.name=Elven Helmet
+item.skyrimmc.elven_chestplate.name=Elven Chestplate
+item.skyrimmc.elven_leggins.name=Elven Leggins
+item.skyrimmc.elven_boots.name=Elven Boots
+item.skyrimmc.falmer_helmet.name=Falmer Helmet
+item.skyrimmc.falmer_chestplate.name=Falmer Chestplate
+item.skyrimmc.falmer_leggins.name=Falmer Leggins
+item.skyrimmc.falmer_boots.name=Falmer Boots
+item.skyrimmc.hide_helmet.name=Hide Helmet
+item.skyrimmc.hide_chestplate.name=Hide Chestplate
+item.skyrimmc.hide_leggins.name=Hide Leggins
+item.skyrimmc.hide_boots.name=Hide Boots
+item.skyrimmc.scaled_helmet.name=Scaled Helmet
+item.skyrimmc.scaled_chestplate.name=Scaled Chestplate
+item.skyrimmc.scaled_leggins.name=Scaled Leggins
+item.skyrimmc.scaled_boots.name=Scaled Boots
+item.skyrimmc.steel_helmet.name=Steel Helmet
+item.skyrimmc.steel_chestplate.name=Steel Chestplate
+item.skyrimmc.steel_leggins.name=Steel Leggins
+item.skyrimmc.steel_boots.name=Steel Boots
+

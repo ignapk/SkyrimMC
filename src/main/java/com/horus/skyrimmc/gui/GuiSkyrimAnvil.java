@@ -1,0 +1,242 @@
+// 
+// Decompiled by Procyon v0.5.36
+// 
+
+package com.horus.skyrimmc.gui;
+
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import com.horus.skyrimmc.util.RecipeUtil;
+import org.lwjgl.input.Keyboard;
+import java.util.Collection;
+import com.google.common.collect.ArrayListMultimap;
+import net.minecraft.entity.player.EntityPlayer;
+import java.util.ArrayList;
+import com.google.common.collect.Multimap;
+import net.minecraft.client.gui.GuiScreen;
+
+public class GuiSkyrimAnvil extends GuiScreen
+{
+    private static final int PADDING = 7;
+    private Multimap<String, Recipe> items;
+    private ArrayList<Recipe> itemList;
+    private Object[] categories;
+    //private String[] categories;
+    private boolean categoryChosen;
+    private int currentCategory;
+    private int currentItem;
+    private float spin;
+    private Recipe currentRecipeObject;
+    private EntityPlayer player;
+    
+    public GuiSkyrimAnvil(final EntityPlayer player) {
+        this.spin = 0.0f;
+        this.currentRecipeObject = null;
+        this.player = player;
+        this.items = /*(Multimap<String, Recipe>)*/ArrayListMultimap.create();
+        this.addItems();
+        this.categories = this.items.keySet().toArray();
+        this.currentCategory = 0;
+        this.currentItem = 0;
+        (this.itemList = new ArrayList<Recipe>()).addAll(this.items.get((String)this.categories[this.currentCategory]));
+    }
+    
+    public boolean doesGuiPauseGame() {
+        return false;
+    }
+    
+    public void updateScreen() {
+        super.updateScreen();
+        if (this.spin > 360.0f) {
+            this.spin -= 360.0f;
+        }
+        else {
+            ++this.spin;
+        }
+    }
+    
+    protected void keyTyped(final char par1, final int par2) {
+        if (!this.mc.inGameHasFocus && par2 == 1) {
+            this.mc.displayGuiScreen((GuiScreen)null);
+            this.mc.setIngameFocus();
+        }
+        if (Keyboard.isKeyDown(208)) {
+            if (!this.categoryChosen) {
+                if (this.currentCategory < this.categories.length - 1) {
+                    ++this.currentCategory;
+                }
+                else {
+                    this.currentCategory = this.categories.length - 1;
+                }
+                this.itemList.clear();
+                this.itemList.addAll(this.items.get((String)this.categories[this.currentCategory]));
+            }
+            else if (this.currentItem < this.itemList.size() - 1) {
+                ++this.currentItem;
+            }
+            else {
+                this.currentItem = this.itemList.size() - 1;
+            }
+        }
+        if (Keyboard.isKeyDown(200)) {
+            if (!this.categoryChosen) {
+                if (this.currentCategory > 0) {
+                    --this.currentCategory;
+                }
+                else {
+                    this.currentCategory = 0;
+                }
+                this.itemList.clear();
+                this.itemList.addAll(this.items.get((String)this.categories[this.currentCategory]));
+            }
+            else if (this.currentItem > 0) {
+                --this.currentItem;
+            }
+            else {
+                this.currentItem = 0;
+            }
+        }
+        if (Keyboard.isKeyDown(205) && !this.categoryChosen) {
+            this.categoryChosen = true;
+        }
+        if (Keyboard.isKeyDown(203) && this.categoryChosen) {
+            this.categoryChosen = false;
+            this.currentItem = 0;
+        }
+        if (Keyboard.isKeyDown(28)) {
+            if (!this.categoryChosen) {
+                return;
+            }
+            final ItemStack[] recipeItems;
+            final ItemStack[] recipe = recipeItems = this.currentRecipeObject.getRecipeItems();
+            for (final ItemStack is : recipeItems) {
+                if (!RecipeUtil.hasItem(this.player, is, is.getCount())) {
+                    this.player.sendMessage(new TextComponentString("[Skyrimcraft] - You don't have the required items!"));
+                    return;
+                }
+            }
+            for (final ItemStack is : recipe) {
+                final ItemStack copy = is.copy();
+                RecipeUtil.removeItem(this.player, copy, copy.getCount());
+            }
+            this.player.inventory.addItemStackToInventory(this.currentRecipeObject.getItemStack().copy());
+            this.player.addExperience(2);
+        }
+    }
+    
+    public void drawScreen(final int par1, final int par2, final float par3) {
+        super.drawScreen(par1, par2, par3);
+        this.drawGradientRect(0, 0, this.width, this.height, 1156377062, 1155390941);
+        if (!this.categoryChosen) {
+            this.drawGradientRect(10, 0, 80, this.height, -1442840576, -1437248171);
+            drawRect(12, 2, 13, this.height - 2, -1);
+            drawRect(77, 2, 78, this.height - 2, -1);
+            drawRect(90, 0, 200, this.height, -1442840576);
+            drawRect(197, 2, 198, this.height - 2, -1426063361);
+            drawRect(92, 2, 93, this.height - 2, -1426063361);
+        }
+        else {
+            drawRect(10, 0, 80, this.height, -1442840576);
+            drawRect(12, 2, 13, this.height - 2, -1);
+            drawRect(77, 2, 78, this.height - 2, -1);
+            this.drawGradientRect(90, 0, 200, this.height, -1442840576, -1437248171);
+            drawRect(197, 2, 198, this.height - 2, -1);
+            drawRect(92, 2, 93, this.height - 2, -1);
+        }
+        if (!this.items.isEmpty()) {
+            final Object[] categories = this.getCategories(this.items);
+            for (int i = (this.currentCategory - 6 >= 0) ? (this.currentCategory - 6) : 0; i < ((this.currentCategory + 6 < categories.length) ? (this.currentCategory + 6) : categories.length); ++i) {
+                if (i == this.currentCategory) {
+                    this.drawString(this.fontRenderer, (String)categories[i], 18, this.height / 2 + 14 * i - this.currentCategory * 7, 16777215);
+                }
+                else {
+                    this.drawString(this.fontRenderer, (String)categories[i], 18, this.height / 2 + 14 * i - this.currentCategory * 7, 12632256);
+                }
+            }
+            if (!this.itemList.isEmpty() || this.itemList != null) {
+                for (int i = (this.currentItem - 6 >= 0) ? (this.currentItem - 6) : 0; i < ((this.currentItem + 6 < this.itemList.size()) ? (this.currentItem + 6) : this.itemList.size()); ++i) {
+                    final Recipe recipe = this.itemList.get(i);
+                    String displayName = recipe.getItemStack().getDisplayName();
+                    if (displayName.length() >= 18) {
+                        displayName = displayName.substring(0, 16) + "..";
+                    }
+                    if (i == this.currentItem) {
+                        this.currentRecipeObject = recipe;
+                        this.drawString(this.fontRenderer, displayName, 98, this.height / 2 + 14 * i - this.currentItem * 7, 16777215);
+                        this.drawItemImage(recipe.getItemStack(), this.width - 110, this.height / 2 - 40, this.spin);
+                        if (recipe.getRecipeItems() == null) {
+                            this.drawItemInformation(recipe, true);
+                        }
+                        else {
+                            this.drawItemInformation(recipe, false);
+                        }
+                    }
+                    else {
+                        this.drawString(this.fontRenderer, displayName, 98, this.height / 2 + 14 * i - this.currentItem * 7, 12632256);
+                    }
+                }
+            }
+        }
+    }
+    
+    private Object[] getCategories(final Multimap<String, Recipe> items) {
+        return items.keySet().toArray();
+    }
+    
+    private void drawItemImage(final ItemStack is, final int xPos, final int yPos, float spin) {
+        GlStateManager.pushMatrix();
+        GlStateManager.translate((float)xPos, (float)yPos, 300.0f);
+        GlStateManager.rotate(45.0f, 0.0f, 1.0f, 0.0f);
+        GlStateManager.rotate(15.0f, 0.0f, 0.0f, 1.0f);
+        GlStateManager.rotate(195.0f, 1.0f, 0.0f, 0.0f);
+        final float n = spin;
+        spin = n + 1.0f;
+        GlStateManager.rotate(n % 360.0f, 0.0f, 1.0f, 0.0f);
+        GlStateManager.scale(100.0f, 100.0f, 100.0f);
+        RenderHelper.enableGUIStandardItemLighting();
+        this.mc.getRenderItem().renderItem(is, ItemCameraTransforms.TransformType.GROUND);
+        GlStateManager.popMatrix();
+    }
+    
+    private void drawItemInformation(final Recipe recipe, final boolean isInventory) {
+        drawRect(this.width - 180, (this.height + 50) / 2, this.width - 20, (this.height + 50) / 2 + 80, -1442840576);
+        this.drawHorizontalLine(this.width - 178, this.width - 22, (this.height + 50) / 2 + 2, -1);
+        this.drawHorizontalLine(this.width - 178, this.width - 22, (this.height + 50) / 2 + 77, -1);
+        this.drawVerticalLine(this.width - 178, (this.height + 50) / 2 + 77, (this.height + 50) / 2 + 2, -1);
+        this.drawVerticalLine(this.width - 22, (this.height + 50) / 2 + 77, (this.height + 50) / 2 + 2, -1);
+        this.drawCenteredString(this.fontRenderer, recipe.getItemStack().getDisplayName(), this.width - 100, (this.height + 50) / 2 + 8, -1);
+        this.drawHorizontalLine(this.width - 170, this.width - 30, (this.height + 50) / 2 + 20, -1);
+        int fontColor = -1;
+        if (isInventory) {
+            this.drawCenteredString(this.fontRenderer, "Item in inventory", this.width - 100, (this.height + 50) / 2 + 30, -1);
+        }
+        else {
+            this.drawCenteredString(this.fontRenderer, "Required Items: ", this.width - 100, (this.height + 50) / 2 + 24, -1);
+            int i = 0;
+            for (final ItemStack is : recipe.getRecipeItems()) {
+                final boolean hasItem = RecipeUtil.hasItem(this.player, is, is.getCount());
+                if (!hasItem) {
+                    fontColor = -65536;
+                }
+                else {
+                    fontColor = -16751616;
+                }
+                this.drawCenteredString(this.fontRenderer, is.getDisplayName() + " (" + is.getCount() + ")", this.width - 100, (this.height + 50) / 2 + 34 + 10 * i++, fontColor);
+            }
+        }
+    }
+    
+    private void addItems() {
+        final ItemStack[] inventory = this.player.inventory.mainInventory.toArray(new ItemStack[0]);
+        for (int i = 0; i < inventory.length; ++i) {
+            if (inventory[i] != null) {
+                this.items.put("Inventory", new Recipe(inventory[i], null));
+            }
+        }
+        RecipeUtil.addAnvilRecipes(this.items);
+    }
+}
