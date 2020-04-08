@@ -3,6 +3,7 @@ package com.horus.skyrimmc.proxy;
 import com.horus.skyrimmc.SkyrimMC;
 import com.horus.skyrimmc.init.ModItems;
 import com.horus.skyrimmc.init.ModBlocks;
+import com.horus.skyrimmc.gui.GuiSkyrimIngame;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 @EventBusSubscriber(value = Side.CLIENT, modid = SkyrimMC.MODID)
 public class ClientProxy extends CommonProxy {
@@ -25,6 +27,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         super.init(event);
+        MinecraftForge.EVENT_BUS.register((Object)new GuiSkyrimIngame());
     }
     
     @Override

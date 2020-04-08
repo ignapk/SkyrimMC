@@ -115,7 +115,7 @@ public class GuiSkyrimAnvil extends GuiScreen
             final ItemStack[] recipe = recipeItems = this.currentRecipeObject.getRecipeItems();
             for (final ItemStack is : recipeItems) {
                 if (!RecipeUtil.hasItem(this.player, is, is.getCount())) {
-                    this.player.sendMessage(new TextComponentString("[Skyrimcraft] - You don't have the required items!"));
+                    this.player.sendMessage(new TextComponentString("[Skyrimmc] - You don't have the required items!"));
                     return;
                 }
             }
