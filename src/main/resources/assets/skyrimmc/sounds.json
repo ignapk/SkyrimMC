@@ -1,0 +1,6 @@
+{
+    "levelup": {
+        "category": "player",
+        "sounds": ["skyrimc:levelup"]
+    }
+}
