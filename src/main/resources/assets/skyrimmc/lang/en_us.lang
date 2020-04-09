@@ -1,4 +1,21 @@
+# Keys
+key.categories.skyrimmc=SkyrimMC Keys
+key.open_menu=Open Menu
+key.spell1=Spell 1
+key.spell2=Spell 2
+
+# Creative Tabs
+itemGroup.skyrimmc=SkyrimMC
+#itemGroup.skyrimmc.blocks=Skyrim Blocks
+#itemGroup.skyrimmc.items=Skyrim Items
+#itemGroup.skyrimmc.combat=Skyrim Combat
+
+# Entities
+#entity.skyrimmc.skyrimFox.name=Fox
+
 # Blocks
+#tile.skyrimcraft:shoutWallEmpty.name=Shout Wall (Empty)
+#tile.skyrimcraft:forge.name=Forge
 tile.skyrimmc.anvil.name=Anvil
 
 # Ores
@@ -9,9 +26,6 @@ tile.skyrimmc.moonstone_ore.name=Moonstone Ore
 tile.skyrimmc.orichalcum_ore.name=Orichalcum Ore
 tile.skyrimmc.quicksilver_ore.name=Quicksilver Ore
 tile.skyrimmc.silver_ore.name=Silver Ore
-
-# Creative Tabs
-itemGroup.skyrimmc=SkyrimMC
 
 # Consumable
 item.skyrimmc.cabbage.name=Cabbage
@@ -111,6 +125,10 @@ item.skyrimmc.steel_sword.name=Steel Sword
 item.skyrimmc.steel_waraxe.name=Steel Waraxe
 item.skyrimmc.steel_warhammer.name=Steel Warhammer
 
+# Bows
+#item.skyrimcraft:daedricBow.name=Daedric Bow
+#item.skyrimcraft:daedricArrow.name=Daedric Arrow
+
 # Armor
 item.skyrimmc.stormcloak_helmet.name=Stormcloak Helmet
 item.skyrimmc.stormcloak_chestplate.name=Stormcloak Chestplate
@@ -168,4 +186,7 @@ item.skyrimmc.steel_helmet.name=Steel Helmet
 item.skyrimmc.steel_chestplate.name=Steel Chestplate
 item.skyrimmc.steel_leggins.name=Steel Leggins
 item.skyrimmc.steel_boots.name=Steel Boots
+
+# Shields
+#item.skyrimcraft:daedricShield.name=Daedric Shield
 
