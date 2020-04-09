@@ -11,6 +11,7 @@ import com.horus.skyrimmc.item.ItemSkyrimGreatsword;
 import com.horus.skyrimmc.item.ItemSkyrimConsumable;
 import com.horus.skyrimmc.item.ItemSkyrimDrinkable;
 import com.horus.skyrimmc.materials.SkyrimMaterials;
+import com.horus.skyrimmc.gui.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
@@ -20,6 +21,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -33,7 +36,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-    
+        NetworkRegistry.INSTANCE.registerGuiHandler((Object)SkyrimMC.instance, (IGuiHandler)new GuiHandler());
     }
 
     public void postInit(FMLPostInitializationEvent event) {
