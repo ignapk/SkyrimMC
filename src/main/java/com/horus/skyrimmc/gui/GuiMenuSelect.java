@@ -4,6 +4,7 @@
 
 package com.horus.skyrimmc.gui;
 
+import com.horus.skyrimmc.gui.GuiSkyrimPlayerInventory;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import net.minecraft.util.ResourceLocation;
@@ -81,7 +82,7 @@ public class GuiMenuSelect extends GuiScreen
         if (GuiMenuSelect.drawRight && par2 == 28) {
             final EntityPlayer p = (EntityPlayer)this.mc.player;
             this.mc.setIngameFocus();
-            this.mc.displayGuiScreen((GuiScreen)new GuiInventory(p));
+            this.mc.displayGuiScreen((GuiScreen)new GuiSkyrimPlayerInventory(p));
         }
         if (GuiMenuSelect.drawLeft && par2 == 28) {
             final EntityPlayer p = (EntityPlayer)this.mc.player;
