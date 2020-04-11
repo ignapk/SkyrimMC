@@ -20,22 +20,34 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.util.Rotation;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.block.state.BlockFaceShape;
+
+
+
 
 public class BlockSkyrimAnvil extends BlockFalling
 {
-    protected static final AxisAlignedBB X_AXIS_AABB;
-    protected static final AxisAlignedBB Z_AXIS_AABB;
+    protected static final AxisAlignedBB X_AXIS_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.125D, 1.0D, 1.0D, 0.875D);
+    protected static final AxisAlignedBB Z_AXIS_AABB = new AxisAlignedBB(0.125D, 0.0D, 0.0D, 0.875D, 1.0D, 1.0D);
+    public static final PropertyDirection FACING = BlockHorizontal.FACING;
     
     public BlockSkyrimAnvil(String name, final Material materialIn) {
         super(materialIn);
         setRegistryName(SkyrimMC.MODID, name);
         setTranslationKey(SkyrimMC.MODID + "." + name);
         setCreativeTab(SkyrimMC.SKYRIMMC_TAB);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setLightOpacity(0);
     }
     
@@ -43,20 +55,37 @@ public class BlockSkyrimAnvil extends BlockFalling
         return false;
     }
     
+    // controls the AO shadows that blocks cast (this is why glass / other light-transparent blocks have this return false)
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
+    // default SOLID, decides whether things like buttons are allowed to be place on it, or how glass panes connect etc
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+        return BlockFaceShape.UNDEFINED;
+    }
+
     public boolean isOpaqueCube(final IBlockState state) {
         return false;
     }
     
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        EnumFacing enumfacing = placer.getHorizontalFacing().rotateY();
+        return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, enumfacing);
+    }
+
     public boolean onBlockActivated(final World worldIn, final BlockPos pos, final IBlockState state, final EntityPlayer playerIn, final EnumHand hand, final EnumFacing facing, final float hitX, final float hitY, final float hitZ) {
         if (!worldIn.isRemote) {
             Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new GuiSkyrimAnvil(playerIn));
             
+            //playerIn.displayGui(new BlockAnvil.Anvil(worldIn, pos)); <-- vanilla 1.12.2 code
         }
         return true;
     }
     
     public AxisAlignedBB getBoundingBox(final IBlockState state, final IBlockAccess source, final BlockPos pos) {
-        return BlockSkyrimAnvil.Z_AXIS_AABB;
+        EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+        return enumfacing.getAxis() == EnumFacing.Axis.X ? X_AXIS_AABB : Z_AXIS_AABB;
     }
     
     protected void onStartFalling(final EntityFallingBlock fallingEntity) {
@@ -71,13 +100,27 @@ public class BlockSkyrimAnvil extends BlockFalling
     public boolean shouldSideBeRendered(final IBlockState blockState, final IBlockAccess blockAccess, final BlockPos pos, final EnumFacing side) {
         return true;
     }
+
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta & 3));
+    }
+
+    public int getMetaFromState(IBlockState state) {
+        int i = 0;
+        i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
+        return i;
+    }
+
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
+        return state.getBlock() != this ? state : state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+    }
+
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[] {FACING});
+    }
     
     public void addInformation(final ItemStack par1ItemStack, final World worldIn, final List<String> par2List, final ITooltipFlag par4) {
         par2List.add("Region: §6Skyrim");
     }
     
-    static {
-        X_AXIS_AABB = new AxisAlignedBB(0.0, 0.0, 0.125, 1.0, 1.0, 0.875);
-        Z_AXIS_AABB = new AxisAlignedBB(0.125, 0.0, 0.0, 0.875, 1.0, 1.0);
-    }
 }

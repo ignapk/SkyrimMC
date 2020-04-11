@@ -1,5 +1,8 @@
 {
     "variants": {
-        "normal": { "model": "skyrimmc:anvil" }
+        "facing=north": { "model": "skyrimmc:anvil" },
+        "facing=east": { "model": "skyrimmc:anvil", "y": 90 },
+        "facing=south": { "model": "skyrimmc:anvil", "y": 180 },
+        "facing=west": { "model": "skyrimmc:anvil", "y": 270 }
     }
 }
