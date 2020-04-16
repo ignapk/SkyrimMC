@@ -1,6 +1,7 @@
 package com.horus.skyrimmc.item;
 
 import com.horus.skyrimmc.SkyrimMC;
+import com.horus.skyrimmc.SkyrimTabs;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
@@ -16,7 +17,7 @@ public class ItemSkyrimSword extends ItemSword {
 		super(material);
 		setRegistryName(SkyrimMC.MODID, name);
 		setTranslationKey(SkyrimMC.MODID + "." + name);
-		setCreativeTab(SkyrimMC.SKYRIMMC_TAB);
+		setCreativeTab(SkyrimTabs.WEAPONS);
 	}
 	
 	//@SideOnly(Side.CLIENT)

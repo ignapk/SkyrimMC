@@ -5,6 +5,7 @@
 package com.horus.skyrimmc.block;
 
 import com.horus.skyrimmc.SkyrimMC;
+import com.horus.skyrimmc.SkyrimTabs;
 import java.util.List;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -46,7 +47,7 @@ public class BlockSkyrimAnvil extends BlockFalling
         super(materialIn);
         setRegistryName(SkyrimMC.MODID, name);
         setTranslationKey(SkyrimMC.MODID + "." + name);
-        setCreativeTab(SkyrimMC.SKYRIMMC_TAB);
+        setCreativeTab(SkyrimTabs.MISC);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setLightOpacity(0);
     }

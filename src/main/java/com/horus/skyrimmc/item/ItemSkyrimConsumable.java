@@ -1,6 +1,7 @@
 package com.horus.skyrimmc.item;
 
 import com.horus.skyrimmc.SkyrimMC;
+import com.horus.skyrimmc.SkyrimTabs;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
@@ -17,7 +18,7 @@ public class ItemSkyrimConsumable extends ItemFood {
         super(amount, saturation, isWolfFood);
         setRegistryName(SkyrimMC.MODID, name);
         setTranslationKey(SkyrimMC.MODID + "." + name);
-        setCreativeTab(SkyrimMC.SKYRIMMC_TAB);
+        setCreativeTab(SkyrimTabs.FOOD);
         this.healAmount = (float)(20 % amount);
     }
     

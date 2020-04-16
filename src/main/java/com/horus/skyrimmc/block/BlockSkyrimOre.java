@@ -5,6 +5,7 @@
 package com.horus.skyrimmc.block;
 
 import com.horus.skyrimmc.SkyrimMC;
+import com.horus.skyrimmc.SkyrimTabs;
 import java.util.List;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,7 @@ public class BlockSkyrimOre extends Block {
         super(materialIn);
         setRegistryName(SkyrimMC.MODID, name);
         setTranslationKey(SkyrimMC.MODID + "." + name);
-        setCreativeTab(SkyrimMC.SKYRIMMC_TAB);
+        setCreativeTab(SkyrimTabs.MISC);
         this.setHardness(1.5f);
         this.setResistance(10.0f);
         //this.setSoundType(SoundType.STONE);

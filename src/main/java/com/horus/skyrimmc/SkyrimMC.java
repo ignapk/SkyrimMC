@@ -3,8 +3,6 @@ package com.horus.skyrimmc;
 
 import com.horus.skyrimmc.recipes.ModRecipes;
 import com.horus.skyrimmc.proxy.CommonProxy;
-import net.minecraft.init.Blocks;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -19,8 +17,6 @@ public class SkyrimMC {
     public static final String NAME = "SkyrimMC";
     public static final String VERSION = "0.0.3";
     public static final String MC_VERSION = "[1.12.2]";
-
-    public static final CreativeTabs SKYRIMMC_TAB = new SkyrimMCTab();
     
     @SidedProxy(clientSide = "com.horus.skyrimmc.proxy.ClientProxy", serverSide = "com.horus.skyrimmc.proxy.ServerProxy")
     public static CommonProxy proxy;

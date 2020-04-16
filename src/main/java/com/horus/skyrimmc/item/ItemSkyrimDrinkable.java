@@ -1,6 +1,7 @@
 package com.horus.skyrimmc.item;
 
 import com.horus.skyrimmc.SkyrimMC;
+import com.horus.skyrimmc.SkyrimTabs;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
@@ -21,7 +22,7 @@ public class ItemSkyrimDrinkable extends ItemSkyrim {
 
     public ItemSkyrimDrinkable(String name, final boolean isAlcoholic) {
         super(name);
-        setCreativeTab(SkyrimMC.SKYRIMMC_TAB);
+        setCreativeTab(SkyrimTabs.POTIONS);
         this.isAlcoholic = isAlcoholic;
     }
     
