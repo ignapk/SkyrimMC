@@ -1,5 +1,5 @@
 {
-    "parent":"skyrimmc:block/forge",
+    "parent":"skyrimmc:block/forge5",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

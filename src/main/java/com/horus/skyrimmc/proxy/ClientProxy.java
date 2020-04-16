@@ -50,6 +50,7 @@ public class ClientProxy extends CommonProxy {
 		registerModel(ModItems.QUICKSILVER_INGOT, 0);
 		registerModel(ModItems.SILVER_INGOT, 0);
 		registerModel(ModItems.STEEL_INGOT, 0);
+		registerModel(ModItems.SOLID_DWEMER_METAL, 0);
 		registerModel(ModItems.DAEDRA_HEART, 0);
 		registerModel(ModItems.LEATHER_STRIPS, 0);
 		registerModel(ModItems.CABBAGE, 0);
@@ -191,6 +192,13 @@ public class ClientProxy extends CommonProxy {
 		//registerModel(ModItems.STORMCLOAK1_CHESTPLATE, 0);
 
 		registerModel(Item.getItemFromBlock(ModBlocks.ANVIL), 0);
+		registerModel(Item.getItemFromBlock(ModBlocks.FORGE3), 0);
+		registerModel(Item.getItemFromBlock(ModBlocks.FORGE4), 0);
+		registerModel(Item.getItemFromBlock(ModBlocks.FORGE5), 0);
+		registerModel(Item.getItemFromBlock(ModBlocks.GRINDSTONE), 0);
+		registerModel(Item.getItemFromBlock(ModBlocks.SMELTER), 0);
+		registerModel(Item.getItemFromBlock(ModBlocks.TANNING_RACK), 0);
+		registerModel(Item.getItemFromBlock(ModBlocks.WORKBENCH), 0);
 		registerModel(Item.getItemFromBlock(ModBlocks.CORUNDUM_ORE), 0);
 		registerModel(Item.getItemFromBlock(ModBlocks.EBONY_ORE), 0);
 		registerModel(Item.getItemFromBlock(ModBlocks.MALACHITE_ORE), 0);

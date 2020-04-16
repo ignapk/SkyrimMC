@@ -1,0 +1,8 @@
+{
+"variants": {
+"facing=north": { "model": "skyrimmc:tanning_rack" },
+"facing=east": { "model": "skyrimmc:tanning_rack", "y": 90 },
+"facing=south": { "model": "skyrimmc:tanning_rack", "y": 180 },
+"facing=west": { "model": "skyrimmc:tanning_rack", "y": 270 }
+}
+}

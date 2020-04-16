@@ -5,18 +5,28 @@ key.spell1=Spell 1
 key.spell2=Spell 2
 
 # Creative Tabs
-itemGroup.skyrimmc=SkyrimMC
-#itemGroup.skyrimmc.blocks=Skyrim Blocks
-#itemGroup.skyrimmc.items=Skyrim Items
-#itemGroup.skyrimmc.combat=Skyrim Combat
+itemGroup.skyrimmc.weapons=WEAPONS
+itemGroup.skyrimmc.apparel=APPAREL
+itemGroup.skyrimmc.potions=POTIONS
+itemGroup.skyrimmc.food=FOOD
+itemGroup.skyrimmc.ingredients=INGREDIENTS
+itemGroup.skyrimmc.books=BOOKS
+itemGroup.skyrimmc.keys=KEYS
+itemGroup.skyrimmc.misc=MISC
 
 # Entities
 #entity.skyrimmc.skyrimFox.name=Fox
 
 # Blocks
 #tile.skyrimcraft:shoutWallEmpty.name=Shout Wall (Empty)
-#tile.skyrimcraft:forge.name=Forge
+tile.skyrimcraft:forge3.name=Forge
+tile.skyrimcraft:forge4.name=Forge
+tile.skyrimcraft:forge5.name=Forge
 tile.skyrimmc.anvil.name=Anvil
+tile.skyrimmc.grindstone.name=Grindstone
+tile.skyrimmc.smelter.name=Smelter
+tile.skyrimmc.tanning_rack.name=Tanning Rack
+tile.skyrimmc.workbench.name=Workbench
 
 # Ores
 tile.skyrimmc.corundum_ore.name=Corundum Ore
@@ -26,6 +36,9 @@ tile.skyrimmc.moonstone_ore.name=Moonstone Ore
 tile.skyrimmc.orichalcum_ore.name=Orichalcum Ore
 tile.skyrimmc.quicksilver_ore.name=Quicksilver Ore
 tile.skyrimmc.silver_ore.name=Silver Ore
+
+# Items
+item.skyrimmc.solid_dwemer_metal.name=Solid Dwemer Metal
 
 # Consumable
 item.skyrimmc.cabbage.name=Cabbage

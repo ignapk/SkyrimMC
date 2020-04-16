@@ -16,6 +16,7 @@ public class ModItems {
 	public static final Item QUICKSILVER_INGOT = null;
 	public static final Item SILVER_INGOT = null;
 	public static final Item STEEL_INGOT = null;
+	public static final Item SOLID_DWEMER_METAL = null;
 	public static final Item DAEDRA_HEART = null;
 	public static final Item LEATHER_STRIPS = null;
 	public static final Item CABBAGE = null;

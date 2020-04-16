@@ -17,6 +17,18 @@ public class GuiHandler implements IGuiHandler
         if (ID == 2) {
             return new GuiMenuSelect();
         }
+        if (ID == 3) {
+            return new GuiSkyrimGrindstone(player);
+        }
+        if (ID == 4) {
+            return new GuiSkyrimSmelter(player);
+        }
+        if (ID == 5) {
+            return new GuiSkyrimTanningRack(player);
+        }
+        if (ID == 6) {
+            return new GuiSkyrimWorkbench(player);
+        }
         return null;
     }
     
@@ -26,6 +38,18 @@ public class GuiHandler implements IGuiHandler
         }
         if (ID == 2) {
             return new GuiMenuSelect();
+        }
+        if (ID == 3) {
+            return new GuiSkyrimGrindstone(player);
+        }
+        if (ID == 4) {
+            return new GuiSkyrimSmelter(player);
+        }
+        if (ID == 5) {
+            return new GuiSkyrimTanningRack(player);
+        }
+        if (ID == 6) {
+            return new GuiSkyrimWorkbench(player);
         }
         return null;
     }

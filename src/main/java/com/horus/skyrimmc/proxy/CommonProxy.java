@@ -3,6 +3,10 @@ package com.horus.skyrimmc.proxy;
 import com.horus.skyrimmc.SkyrimMC;
 import com.horus.skyrimmc.block.BlockSkyrimOre;
 import com.horus.skyrimmc.block.BlockSkyrimAnvil;
+import com.horus.skyrimmc.block.BlockSkyrimGrindstone;
+import com.horus.skyrimmc.block.BlockSkyrimSmelter;
+import com.horus.skyrimmc.block.BlockSkyrimTanningRack;
+import com.horus.skyrimmc.block.BlockSkyrimWorkbench;
 import com.horus.skyrimmc.init.ModBlocks;
 import com.horus.skyrimmc.item.ItemSkyrim;
 import com.horus.skyrimmc.item.ItemSkyrimArmor;
@@ -10,6 +14,7 @@ import com.horus.skyrimmc.item.ItemSkyrimSword;
 import com.horus.skyrimmc.item.ItemSkyrimGreatsword;
 import com.horus.skyrimmc.item.ItemSkyrimConsumable;
 import com.horus.skyrimmc.item.ItemSkyrimDrinkable;
+import com.horus.skyrimmc.item.ItemSkyrimIngredient;
 import com.horus.skyrimmc.materials.SkyrimMaterials;
 import com.horus.skyrimmc.gui.GuiHandler;
 import net.minecraft.block.Block;
@@ -56,7 +61,8 @@ public class CommonProxy {
 			new ItemSkyrim("quicksilver_ingot"),
 			new ItemSkyrim("silver_ingot"),
 			new ItemSkyrim("steel_ingot"),
-			new ItemSkyrim("daedra_heart"),
+			new ItemSkyrim("solid_dwemer_metal"),
+			new ItemSkyrimIngredient("daedra_heart"),
 			new ItemSkyrim("leather_strips"),
 			
 			new ItemSkyrimConsumable("cabbage", 2, 2.0f, false),
@@ -200,6 +206,13 @@ public class CommonProxy {
 
 		final Item[] itemBlocks = {
 			new ItemBlock(ModBlocks.ANVIL).setRegistryName(ModBlocks.ANVIL.getRegistryName()),
+			new ItemBlock(ModBlocks.FORGE3).setRegistryName(ModBlocks.FORGE3.getRegistryName()),
+			new ItemBlock(ModBlocks.FORGE4).setRegistryName(ModBlocks.FORGE4.getRegistryName()),
+			new ItemBlock(ModBlocks.FORGE5).setRegistryName(ModBlocks.FORGE5.getRegistryName()),
+			new ItemBlock(ModBlocks.GRINDSTONE).setRegistryName(ModBlocks.GRINDSTONE.getRegistryName()),
+			new ItemBlock(ModBlocks.SMELTER).setRegistryName(ModBlocks.SMELTER.getRegistryName()),
+			new ItemBlock(ModBlocks.TANNING_RACK).setRegistryName(ModBlocks.TANNING_RACK.getRegistryName()),
+			new ItemBlock(ModBlocks.WORKBENCH).setRegistryName(ModBlocks.WORKBENCH.getRegistryName()),
 			new ItemBlock(ModBlocks.CORUNDUM_ORE).setRegistryName(ModBlocks.CORUNDUM_ORE.getRegistryName()),
 			new ItemBlock(ModBlocks.EBONY_ORE).setRegistryName(ModBlocks.EBONY_ORE.getRegistryName()),
 			new ItemBlock(ModBlocks.MALACHITE_ORE).setRegistryName(ModBlocks.MALACHITE_ORE.getRegistryName()),
@@ -217,6 +230,13 @@ public class CommonProxy {
 	public static void registerBlocks(Register<Block> event) {
 		final Block[] blocks = {
 			new BlockSkyrimAnvil("anvil", Material.ANVIL),
+			new BlockSkyrimAnvil("forge3", Material.ANVIL),
+			new BlockSkyrimAnvil("forge4", Material.ANVIL),
+			new BlockSkyrimAnvil("forge5", Material.ANVIL),
+			new BlockSkyrimGrindstone("grindstone", Material.ANVIL),
+			new BlockSkyrimSmelter("smelter", Material.ANVIL),
+			new BlockSkyrimTanningRack("tanning_rack", Material.ANVIL),
+			new BlockSkyrimWorkbench("workbench", Material.ANVIL),
 			new BlockSkyrimOre("corundum_ore", Material.ROCK),
 			new BlockSkyrimOre("ebony_ore", Material.ROCK),
 			new BlockSkyrimOre("malachite_ore", Material.ROCK),

@@ -63,6 +63,7 @@ public class RecipeUtil
     }
     
     public static void addAnvilRecipes(final Multimap<String, Recipe> items) {
+        addHIDE(items);
         addDAEDRIC(items);
         addDWARVEN(items);
         addEBONY(items);
@@ -73,19 +74,27 @@ public class RecipeUtil
         addSTEEL(items);
     }
     
-    public static void addCraftingTableRecipes() {
-        //GameRegistry.addRecipe(new ItemStack((Block)BlockHandler.anvil, 1), new Object[] { "AAA", " B ", "BBB", 'A', new ItemStack(Blocks.field_150339_S, 1), 'B', new ItemStack((Item)ItemHandler.STEEL_INGOT, 1) });
+    public static void addGrindstoneRecipes(final Multimap<String, Recipe> items) {
+        items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_BATTLEAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack((Item)ModItems.DAEDRA_HEART), new ItemStack((Item)ModItems.EBONY_INGOT, 5) }));
     }
     
-    public static void addSmeltingRecipes() {
-        //GameRegistry.addSmelting((Block)BlockHandler.corundumOre, new ItemStack((Item)ItemHandler.corundum_INGOT, 1), 0.1f);
-        //GameRegistry.addSmelting((Block)BlockHandler.EBONYOre, new ItemStack((Item)ItemHandler.EBONY_INGOT, 1), 0.1f);
-        //GameRegistry.addSmelting((Block)BlockHandler.MALACHITEOre, new ItemStack((Item)ItemHandler.MALACHITE_INGOT, 1), 0.1f);
-        //GameRegistry.addSmelting((Block)BlockHandler.MOONSTONEOre, new ItemStack((Item)ItemHandler.MOONSTONE_INGOT, 1), 0.1f);
-        //GameRegistry.addSmelting((Block)BlockHandler.ORICHALCUMOre, new ItemStack((Item)ItemHandler.ORICHALCUM_INGOT, 1), 0.1f);
-        //GameRegistry.addSmelting((Block)BlockHandler.QUICKSILVEROre, new ItemStack((Item)ItemHandler.QUICKSILVER_INGOT, 1), 0.1f);
-        //GameRegistry.addSmelting((Block)BlockHandler.silverOre, new ItemStack((Item)ItemHandler.silver_INGOT, 1), 0.1f);
-        //GameRegistry.addShapelessRecipe(new ItemStack((Item)ItemHandler.STEEL_INGOT, 1), new Object[] { new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.field_151044_h, 1) });
+    public static void addTanningRackRecipes(final Multimap<String, Recipe> items) {
+        items.put("MISC", new Recipe(new ItemStack((Item)ModItems.LEATHER_STRIPS, 4), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 1) }));
+    }
+    
+    public static void addSmelterRecipes(final Multimap<String, Recipe> items) {
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.CORUNDUM_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.CORUNDUM_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.EBONY_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.EBONY_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)Items.GOLD_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(Blocks.GOLD_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(Blocks.IRON_ORE), 1) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.ORICHALCUM_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.QUICKSILVER_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.QUICKSILVER_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.MALACHITE_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.MALACHITE_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.MOONSTONE_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.SILVER_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.SILVER_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.STEEL_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.CORUNDUM_ORE), 2) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.CORUNDUM_INGOT, 1), new ItemStack[] { new ItemStack((Item)Item.getItemFromBlock(ModBlocks.CORUNDUM_ORE), 1), new ItemStack((Item)Item.getItemFromBlock(Blocks.IRON_ORE), 1) }));
+            items.put("MISC", new Recipe(new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 5), new ItemStack[] { new ItemStack((Item)ModItems.SOLID_DWEMER_METAL, 1) }));
     }
     
     private static void addDAEDRIC(final Multimap<String, Recipe> items) {
@@ -96,6 +105,10 @@ public class RecipeUtil
         items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 1), new ItemStack((Item)ModItems.DAEDRA_HEART), new ItemStack((Item)ModItems.EBONY_INGOT, 2) }));
         items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack((Item)ModItems.DAEDRA_HEART), new ItemStack((Item)ModItems.EBONY_INGOT, 2) }));
         items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 3), new ItemStack((Item)ModItems.DAEDRA_HEART), new ItemStack((Item)ModItems.EBONY_INGOT, 5) }));
+        items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.DAEDRA_HEART, 1), new ItemStack((Item)ModItems.EBONY_INGOT, 5), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.DAEDRA_HEART, 1), new ItemStack((Item)ModItems.EBONY_INGOT, 3), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.DAEDRA_HEART, 1), new ItemStack((Item)ModItems.EBONY_INGOT, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("DAEDRIC", new Recipe(new ItemStack((Item)ModItems.DAEDRIC_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.DAEDRA_HEART, 1), new ItemStack((Item)ModItems.EBONY_INGOT, 3), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
     }
     
     private static void addDWARVEN(final Multimap<String, Recipe> items) {
@@ -106,6 +119,10 @@ public class RecipeUtil
         items.put("DWARVEN", new Recipe(new ItemStack((Item)ModItems.DWARVEN_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 1) }));
         items.put("DWARVEN", new Recipe(new ItemStack((Item)ModItems.DWARVEN_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 1) }));
         items.put("DWARVEN", new Recipe(new ItemStack((Item)ModItems.DWARVEN_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 2) }));
+        items.put("DWARVEN", new Recipe(new ItemStack((Item)ModItems.DWARVEN_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 3), new ItemStack((Item)ModItems.STEEL_INGOT, 1), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("DWARVEN", new Recipe(new ItemStack((Item)ModItems.DWARVEN_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 2), new ItemStack((Item)ModItems.STEEL_INGOT, 1), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("DWARVEN", new Recipe(new ItemStack((Item)ModItems.DWARVEN_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 1), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("DWARVEN", new Recipe(new ItemStack((Item)ModItems.DWARVEN_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.DWARVEN_METAL_INGOT, 2), new ItemStack((Item)ModItems.STEEL_INGOT, 1), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
     }
     
     private static void addEBONY(final Multimap<String, Recipe> items) {
@@ -116,6 +133,10 @@ public class RecipeUtil
         items.put("EBONY", new Recipe(new ItemStack((Item)ModItems.EBONY_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.EBONY_INGOT, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1) }));
         items.put("EBONY", new Recipe(new ItemStack((Item)ModItems.EBONY_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.EBONY_INGOT, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
         items.put("EBONY", new Recipe(new ItemStack((Item)ModItems.EBONY_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.EBONY_INGOT, 5), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("EBONY", new Recipe(new ItemStack((Item)ModItems.EBONY_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.EBONY_INGOT, 5), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("EBONY", new Recipe(new ItemStack((Item)ModItems.EBONY_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.EBONY_INGOT, 3), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("EBONY", new Recipe(new ItemStack((Item)ModItems.EBONY_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.EBONY_INGOT, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("EBONY", new Recipe(new ItemStack((Item)ModItems.EBONY_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.EBONY_INGOT, 3), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
     }
     
     private static void addELVEN(final Multimap<String, Recipe> items) {
@@ -126,6 +147,10 @@ public class RecipeUtil
         items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 1), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)ModItems.QUICKSILVER_INGOT, 1) }));
         items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)ModItems.QUICKSILVER_INGOT, 1) }));
         items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 3), new ItemStack(Items.IRON_INGOT, 2), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 2), new ItemStack((Item)ModItems.QUICKSILVER_INGOT, 1) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.MOONSTONE_INGOT, 4), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.MOONSTONE_INGOT, 2), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.MOONSTONE_INGOT, 2), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1) }));
     }
     
     private static void addGLASS(final Multimap<String, Recipe> items) {
@@ -136,6 +161,10 @@ public class RecipeUtil
         items.put("GLASS", new Recipe(new ItemStack((Item)ModItems.GLASS_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 1), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)ModItems.MALACHITE_INGOT, 1) }));
         items.put("GLASS", new Recipe(new ItemStack((Item)ModItems.GLASS_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)ModItems.MALACHITE_INGOT, 1) }));
         items.put("GLASS", new Recipe(new ItemStack((Item)ModItems.GLASS_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 3), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 2), new ItemStack((Item)ModItems.MALACHITE_INGOT, 3) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.MALACHITE_INGOT, 4), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 2), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.MALACHITE_INGOT, 2), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.MALACHITE_INGOT, 1), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("ELVEN", new Recipe(new ItemStack((Item)ModItems.ELVEN_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.MALACHITE_INGOT, 2), new ItemStack((Item)ModItems.MOONSTONE_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1) }));
     }
     
     private static void addIRON(final Multimap<String, Recipe> items) {
@@ -146,6 +175,10 @@ public class RecipeUtil
         items.put("IRON", new Recipe(new ItemStack((Item)ModItems.IRON_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 1), new ItemStack(Items.IRON_INGOT, 2) }));
         items.put("IRON", new Recipe(new ItemStack((Item)ModItems.IRON_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack(Items.IRON_INGOT, 2) }));
         items.put("IRON", new Recipe(new ItemStack((Item)ModItems.IRON_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 3), new ItemStack(Items.IRON_INGOT, 4) }));
+        items.put("IRON", new Recipe(new ItemStack((Item)ModItems.IRON_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)Items.IRON_INGOT, 5), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("IRON", new Recipe(new ItemStack((Item)ModItems.IRON_BOOTS, 1), new ItemStack[] { new ItemStack((Item)Items.IRON_INGOT, 3), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("IRON", new Recipe(new ItemStack((Item)ModItems.IRON_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)Items.IRON_INGOT, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("IRON", new Recipe(new ItemStack((Item)ModItems.IRON_HELMET, 1), new ItemStack[] { new ItemStack((Item)Items.IRON_INGOT, 3), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
     }
     
     private static void addORCISH(final Multimap<String, Recipe> items) {
@@ -156,6 +189,10 @@ public class RecipeUtil
         items.put("ORCISH", new Recipe(new ItemStack((Item)ModItems.ORCISH_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 1), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 2) }));
         items.put("ORCISH", new Recipe(new ItemStack((Item)ModItems.ORCISH_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 2) }));
         items.put("ORCISH", new Recipe(new ItemStack((Item)ModItems.ORCISH_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 3), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 4) }));
+        items.put("ORCISH", new Recipe(new ItemStack((Item)ModItems.ORCISH_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 4), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("ORCISH", new Recipe(new ItemStack((Item)ModItems.ORCISH_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 3), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("ORCISH", new Recipe(new ItemStack((Item)ModItems.ORCISH_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 2), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("ORCISH", new Recipe(new ItemStack((Item)ModItems.ORCISH_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.ORICHALCUM_INGOT, 2), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
     }
     
     private static void addSTEEL(final Multimap<String, Recipe> items) {
@@ -166,5 +203,39 @@ public class RecipeUtil
         items.put("STEEL", new Recipe(new ItemStack((Item)ModItems.STEEL_SWORD, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 1), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 2) }));
         items.put("STEEL", new Recipe(new ItemStack((Item)ModItems.STEEL_WARAXE, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 2), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 2) }));
         items.put("STEEL", new Recipe(new ItemStack((Item)ModItems.STEEL_WARHAMMER, 1), new ItemStack[] { new ItemStack((Item)ModItems.LEATHER_STRIPS, 3), new ItemStack(Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 4) }));
+        items.put("STEEL", new Recipe(new ItemStack((Item)ModItems.STEEL_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 4), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("STEEL", new Recipe(new ItemStack((Item)ModItems.STEEL_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 3), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("STEEL", new Recipe(new ItemStack((Item)ModItems.STEEL_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 2), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("STEEL", new Recipe(new ItemStack((Item)ModItems.STEEL_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 2), new ItemStack((Item)Items.IRON_INGOT, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
     }
+    
+    private static void addHIDE(final Multimap<String, Recipe> items) {
+        items.put("HIDE", new Recipe(new ItemStack((Item)ModItems.HIDE_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 4), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("HIDE", new Recipe(new ItemStack((Item)ModItems.HIDE_BOOTS, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("HIDE", new Recipe(new ItemStack((Item)ModItems.HIDE_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("HIDE", new Recipe(new ItemStack((Item)ModItems.HIDE_HELMET, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1) }));
+    }
+    
+    private static void addLEATHER(final Multimap<String, Recipe> items) {
+        items.put("LEATHER", new Recipe(new ItemStack((Item)Items.LEATHER_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 4), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("LEATHER", new Recipe(new ItemStack((Item)Items.LEATHER_BOOTS, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("LEATHER", new Recipe(new ItemStack((Item)Items.LEATHER_LEGGINGS, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("LEATHER", new Recipe(new ItemStack((Item)Items.LEATHER_HELMET, 1), new ItemStack[] { new ItemStack((Item)Items.LEATHER, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1) }));
+    }
+    
+    private static void addIMPERIAL(final Multimap<String, Recipe> items) {
+        items.put("IMPERIAL", new Recipe(new ItemStack((Item)ModItems.IMPERIAL_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 4), new ItemStack((Item)Items.LEATHER, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("IMPERIAL", new Recipe(new ItemStack((Item)ModItems.IMPERIAL_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 2), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("IMPERIAL", new Recipe(new ItemStack((Item)ModItems.IMPERIAL_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 2), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("IMPERIAL", new Recipe(new ItemStack((Item)ModItems.IMPERIAL_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.STEEL_INGOT, 2), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1) }));
+    }
+    
+    private static void addSCALED(final Multimap<String, Recipe> items) {
+        items.put("SCALED", new Recipe(new ItemStack((Item)ModItems.SCALED_CHESTPLATE, 1), new ItemStack[] { new ItemStack((Item)ModItems.CORUNDUM_INGOT, 2), new ItemStack((Item)ModItems.STEEL_INGOT, 3), new ItemStack((Item)Items.LEATHER, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 3) }));
+        items.put("SCALED", new Recipe(new ItemStack((Item)ModItems.SCALED_BOOTS, 1), new ItemStack[] { new ItemStack((Item)ModItems.CORUNDUM_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 2), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("SCALED", new Recipe(new ItemStack((Item)ModItems.SCALED_LEGGINS, 1), new ItemStack[] { new ItemStack((Item)ModItems.CORUNDUM_INGOT, 1), new ItemStack((Item)ModItems.STEEL_INGOT, 1), new ItemStack((Item)Items.LEATHER, 1), new ItemStack((Item)ModItems.LEATHER_STRIPS, 2) }));
+        items.put("SCALED", new Recipe(new ItemStack((Item)ModItems.HIDE_HELMET, 1), new ItemStack[] { new ItemStack((Item)ModItems.CORUNDUM_INGOT, 1),new ItemStack((Item)ModItems.STEEL_INGOT, 2),new ItemStack((Item)Items.LEATHER, 2), new ItemStack((Item)ModItems.LEATHER_STRIPS, 1) }));
+    }
+    
+    
 }

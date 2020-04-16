@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "skyrimmc:smelter" },
+        "facing=east": { "model": "skyrimmc:smelter", "y": 90 },
+        "facing=south": { "model": "skyrimmc:smelter", "y": 180 },
+        "facing=west": { "model": "skyrimmc:smelter", "y": 270 }
+    }
+}
