@@ -3,6 +3,9 @@ package com.horus.skyrimmc;
 
 import com.horus.skyrimmc.recipes.ModRecipes;
 import com.horus.skyrimmc.proxy.CommonProxy;
+import com.horus.skyrimmc.util.playerdata.IGold;
+import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,6 +27,9 @@ public class SkyrimMC {
     @Mod.Instance(MODID)
     public static SkyrimMC instance;
     
+    @CapabilityInject(IGold.class)
+    public static final Capability<IGold> GOLD_CAP;
+    
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
@@ -38,5 +44,9 @@ public class SkyrimMC {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
+    }
+    
+    static {
+        GOLD_CAP = null;
     }
 }

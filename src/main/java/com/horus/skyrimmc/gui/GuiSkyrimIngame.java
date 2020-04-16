@@ -4,12 +4,15 @@
 
 package com.horus.skyrimmc.gui;
 
+import com.horus.skyrimmc.util.playerdata.IGold;
+import com.horus.skyrimmc.SkyrimMC;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.EntityLivingBase;
@@ -132,9 +135,9 @@ public class GuiSkyrimIngame extends Gui
             this.drawTexturedModalRect(width / 2 - 78.5f, 32.0f, 3, 88, 157, 8);
             this.drawTexturedModalRect(width / 2 - 78.5f + 9.0f, 35.0f, 10, 102, (int)(142.0f % this.currentMobHealth), 2);
         }
-        /*final IGold gold = (IGold)this.mc.player.getCapability((Capability)Skyrimcraft.GOLD_CAP, (EnumFacing)null);
+        final IGold gold = (IGold)this.mc.player.getCapability((Capability)SkyrimMC.GOLD_CAP, (EnumFacing)null);
         if (gold != null) {
-            this.func_73731_b(fontrenderer, "Gold: " + gold.getGold(), 10, 10, -2838729);
-        }*/
+            this.drawString(fontrenderer, "Gold: " + gold.getGold(), 10, 10, -2838729);
+        }
     }
 }

@@ -17,6 +17,10 @@ import com.horus.skyrimmc.item.ItemSkyrimDrinkable;
 import com.horus.skyrimmc.item.ItemSkyrimIngredient;
 import com.horus.skyrimmc.materials.SkyrimMaterials;
 import com.horus.skyrimmc.gui.GuiHandler;
+import com.horus.skyrimmc.util.playerdata.PlayerConstruction;
+import com.horus.skyrimmc.util.playerdata.GoldImplementation;
+import com.horus.skyrimmc.util.playerdata.GoldStorage;
+import com.horus.skyrimmc.util.playerdata.IGold;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
@@ -24,6 +28,9 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemArmor;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -37,6 +44,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
+        CapabilityManager.INSTANCE.register((Class)IGold.class, (Capability.IStorage)new GoldStorage(), (Class)GoldImplementation.class);
+        MinecraftForge.EVENT_BUS.register((Object)new PlayerConstruction());
     
     }
 
