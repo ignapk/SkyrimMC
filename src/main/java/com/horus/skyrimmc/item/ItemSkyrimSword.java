@@ -11,14 +11,25 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.minecraft.client.util.ITooltipFlag;
 
-public class ItemSkyrimSword extends ItemSword {
+public class ItemSkyrimSword extends ItemSword implements IItem {
 	
+    public int price = 0;
+
 	public ItemSkyrimSword(String name, ToolMaterial material) {
 		super(material);
 		setRegistryName(SkyrimMC.MODID, name);
 		setTranslationKey(SkyrimMC.MODID + "." + name);
 		setCreativeTab(SkyrimTabs.WEAPONS);
 	}
+
+	public ItemSkyrimSword(String name, ToolMaterial material, int price) {
+        this(name, material);
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 	
 	//@SideOnly(Side.CLIENT)
 	@Override

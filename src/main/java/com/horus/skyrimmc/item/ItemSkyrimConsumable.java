@@ -10,8 +10,9 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemFood;
 
-public class ItemSkyrimConsumable extends ItemFood {
+public class ItemSkyrimConsumable extends ItemFood implements IItem {
 
+    public int price = 0;
     private float healAmount;
 
     public ItemSkyrimConsumable(String name, final int amount, final float saturation, final boolean isWolfFood) {
@@ -22,6 +23,15 @@ public class ItemSkyrimConsumable extends ItemFood {
         this.healAmount = (float)(20 % amount);
     }
     
+    public ItemSkyrimConsumable(String name, final int amount, final float saturation, final boolean isWolfFood, int price) {
+        this(name, amount, saturation, isWolfFood);
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public void addInformation(final ItemStack stack, final World worldIn, final List<String> tooltip, final ITooltipFlag advanced) {
         tooltip.add("Region: §6Skyrim");

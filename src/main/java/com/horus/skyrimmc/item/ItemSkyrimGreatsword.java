@@ -15,6 +15,10 @@ public class ItemSkyrimGreatsword extends ItemSkyrimSword {
 		super(name, material);
 	}
 	
+	public ItemSkyrimGreatsword(String name, ToolMaterial material, int price) {
+		this(name, material);
+		this.price = price;
+	}
 	
 	public void onUpdate(final ItemStack stack, final World worldIn, final Entity entityIn, final int itemSlot, final boolean isSelected) {
 	    if (isSelected) {

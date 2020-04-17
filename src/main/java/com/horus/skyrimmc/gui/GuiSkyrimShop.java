@@ -1,6 +1,7 @@
 package com.horus.skyrimmc.gui;
 
 import com.horus.skyrimmc.util.playerdata.IGold;
+import com.horus.skyrimmc.item.IItem;
 import com.horus.skyrimmc.SkyrimMC;
 import com.horus.skyrimmc.networking.PacketGoldServer;
 import net.minecraft.client.gui.GuiScreen;
@@ -204,15 +205,14 @@ public class GuiSkyrimShop extends GuiScreen
             
             final IGold gold = (IGold)this.mc.player.getCapability((Capability)SkyrimMC.GOLD_CAP, null);
             if (gold != null) {
-                if (gold.getGold() < 30) {
+                ItemStack is = currentItemStacks.get(itemIndex);
+                IItem item = (IItem)is.getItem();
+                if (gold.getGold() < item.getPrice()) {
                     this.player.sendMessage(new TextComponentString("[Skyrimmc] - You don't have enough gold!"));
                     return;
-                } else {
-                    gold.setGold(0);
-                    SkyrimMC.SNW_INSTANCE.sendToServer(new PacketGoldServer(this.mc.player));
                 }
-            
-                ItemStack is = currentItemStacks.get(itemIndex);
+                gold.setGold(gold.getGold() - item.getPrice());
+                SkyrimMC.SNW_INSTANCE.sendToServer(new PacketGoldServer(this.mc.player));
                 this.player.inventory.addItemStackToInventory(is.copy());
             }   
         }
@@ -302,5 +302,8 @@ private void updateStock(ItemStack[] array) {
         this.drawVerticalLine(this.width - 22, (this.height + 50) / 2 + 77, (this.height + 50) / 2 + 2, -1);
         this.drawCenteredString(fontRenderer, is.getDisplayName(), this.width - 100, (this.height + 50) / 2 + 8, -1);
         this.drawHorizontalLine(this.width - 170, this.width - 30, (this.height + 50) / 2 + 20, -1);
+
+        IItem item = (IItem)is.getItem();
+        this.drawCenteredString(this.fontRenderer, "Price: " + item.getPrice(), this.width - 100, (this.height + 50) / 2 + 24, -1);
     }
 }

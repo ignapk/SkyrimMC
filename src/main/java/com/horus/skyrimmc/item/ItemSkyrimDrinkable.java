@@ -26,6 +26,11 @@ public class ItemSkyrimDrinkable extends ItemSkyrim {
         this.isAlcoholic = isAlcoholic;
     }
     
+    public ItemSkyrimDrinkable(String name, final boolean isAlcoholic, int price) {
+        this(name, isAlcoholic);
+        this.price = price;
+    }
+
     public ItemStack onItemUseFinish(final ItemStack stack, final World worldIn, final EntityLivingBase entityLiving) {
         final EntityPlayer entityPlayer = (entityLiving instanceof EntityPlayer) ? (EntityPlayer)entityLiving : null;
         if (entityPlayer == null || !entityPlayer.capabilities.isCreativeMode) {
