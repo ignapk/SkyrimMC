@@ -19,7 +19,7 @@ public class SkyrimMC {
 
     public static final String MODID = "skyrimmc";
     public static final String NAME = "SkyrimMC";
-    public static final String VERSION = "0.0.3";
+    public static final String VERSION = "0.0.4";
     public static final String MC_VERSION = "[1.12.2]";
     
     @SidedProxy(clientSide = "com.horus.skyrimmc.proxy.ClientProxy", serverSide = "com.horus.skyrimmc.proxy.ServerProxy")
