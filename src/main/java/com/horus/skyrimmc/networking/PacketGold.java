@@ -8,6 +8,8 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
 
 
 
@@ -37,6 +39,7 @@ public class PacketGold implements IMessage {
             return null;
         }
         
+        @SideOnly(Side.CLIENT)
         private void handle(PacketGold message, MessageContext ctx) {
         	//Main.proxy.handleMana(message.mana, 27);
         	EntityPlayer player = Minecraft.getMinecraft().player;

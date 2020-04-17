@@ -60,11 +60,12 @@ public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing 
 EnumFacing enumfacing = placer.getHorizontalFacing().rotateY();
 return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, enumfacing);
 }
+@SideOnly(Side.CLIENT)
 public boolean onBlockActivated(final World worldIn, final BlockPos pos, final IBlockState state, final EntityPlayer playerIn, final EnumHand hand, final EnumFacing facing, final float hitX, final float hitY, final float hitZ) {
-if (!worldIn.isRemote) {
+//if (!worldIn.isRemote) {
 Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new GuiSkyrimWorkbench(playerIn));
 //playerIn.displayGui(new BlockAnvil.Anvil(worldIn, pos)); <-- vanilla 1.12.2 code
-}
+//}
 return true;
 }
 public AxisAlignedBB getBoundingBox(final IBlockState state, final IBlockAccess source, final BlockPos pos) {
