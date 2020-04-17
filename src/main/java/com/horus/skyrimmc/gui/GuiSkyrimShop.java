@@ -2,6 +2,7 @@ package com.horus.skyrimmc.gui;
 
 import com.horus.skyrimmc.util.playerdata.IGold;
 import com.horus.skyrimmc.SkyrimMC;
+import com.horus.skyrimmc.networking.PacketGoldServer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -208,6 +209,7 @@ public class GuiSkyrimShop extends GuiScreen
                     return;
                 } else {
                     gold.setGold(0);
+                    SkyrimMC.SNW_INSTANCE.sendToServer(new PacketGoldServer(this.mc.player));
                 }
             
                 ItemStack is = currentItemStacks.get(itemIndex);

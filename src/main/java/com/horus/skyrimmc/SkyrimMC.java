@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.SidedProxy;
 
 @Mod(modid = SkyrimMC.MODID, name = SkyrimMC.NAME, version = SkyrimMC.VERSION, acceptedMinecraftVersions = SkyrimMC.MC_VERSION)
@@ -30,6 +31,8 @@ public class SkyrimMC {
     @CapabilityInject(IGold.class)
     public static final Capability<IGold> GOLD_CAP;
     
+    public static SimpleNetworkWrapper SNW_INSTANCE;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);

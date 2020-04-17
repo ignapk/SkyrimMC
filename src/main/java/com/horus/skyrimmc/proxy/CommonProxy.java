@@ -16,6 +16,8 @@ import com.horus.skyrimmc.item.ItemSkyrimConsumable;
 import com.horus.skyrimmc.item.ItemSkyrimDrinkable;
 import com.horus.skyrimmc.item.ItemSkyrimIngredient;
 import com.horus.skyrimmc.materials.SkyrimMaterials;
+import com.horus.skyrimmc.networking.PacketGold;
+import com.horus.skyrimmc.networking.PacketGoldServer;
 import com.horus.skyrimmc.gui.GuiHandler;
 import com.horus.skyrimmc.util.playerdata.PlayerConstruction;
 import com.horus.skyrimmc.util.playerdata.GoldImplementation;
@@ -24,12 +26,18 @@ import com.horus.skyrimmc.util.playerdata.IGold;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -39,6 +47,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.client.event.ClientChatEvent;
 
 @EventBusSubscriber(modid = SkyrimMC.MODID)
 public class CommonProxy {
@@ -51,6 +60,9 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler((Object)SkyrimMC.instance, (IGuiHandler)new GuiHandler());
+        SkyrimMC.SNW_INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("skyrimmc");
+        SkyrimMC.SNW_INSTANCE.registerMessage(PacketGold.Handler.class, PacketGold.class, 0, Side.CLIENT);
+        SkyrimMC.SNW_INSTANCE.registerMessage(PacketGoldServer.Handler.class, PacketGoldServer.class, 1, Side.SERVER);
     }
 
     public void postInit(FMLPostInitializationEvent event) {
@@ -258,4 +270,13 @@ public class CommonProxy {
 		event.getRegistry().registerAll(blocks);
 	}
 	
+	@SubscribeEvent
+	public static void onPlayerLogsIn(PlayerLoggedInEvent event) {
+	    EntityPlayer player = event.player;
+	    IGold gold = player.getCapability(SkyrimMC.GOLD_CAP, null);
+	    gold.setGold(gold.getGold()+1);
+	    player.sendMessage(new TextComponentString("Hello there. You've made 1 gold since your last visit. Your gold: " + String.valueOf(gold.getGold())));
+	    SkyrimMC.SNW_INSTANCE.sendTo(new PacketGold(player), (EntityPlayerMP)player);
+	}
+
 }
