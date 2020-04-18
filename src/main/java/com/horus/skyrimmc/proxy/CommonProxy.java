@@ -17,6 +17,7 @@ import com.horus.skyrimmc.item.ItemSkyrimDrinkable;
 import com.horus.skyrimmc.item.ItemSkyrimIngredient;
 import com.horus.skyrimmc.materials.SkyrimMaterials;
 import com.horus.skyrimmc.networking.PacketGold;
+import com.horus.skyrimmc.networking.PacketMyAss;
 import com.horus.skyrimmc.networking.PacketGoldServer;
 import com.horus.skyrimmc.gui.GuiHandler;
 import com.horus.skyrimmc.util.playerdata.PlayerConstruction;
@@ -62,6 +63,7 @@ public class CommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler((Object)SkyrimMC.instance, (IGuiHandler)new GuiHandler());
         SkyrimMC.SNW_INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("skyrimmc");
         SkyrimMC.SNW_INSTANCE.registerMessage(PacketGold.Handler.class, PacketGold.class, 0, Side.CLIENT);
+        SkyrimMC.SNW_INSTANCE.registerMessage(PacketMyAss.Handler.class, PacketMyAss.class, 2, Side.CLIENT);
         SkyrimMC.SNW_INSTANCE.registerMessage(PacketGoldServer.Handler.class, PacketGoldServer.class, 1, Side.SERVER);
     }
 
