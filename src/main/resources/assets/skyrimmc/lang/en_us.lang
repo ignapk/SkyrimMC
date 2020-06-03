@@ -51,7 +51,41 @@ item.skyrimmc.venison.name=Venison
 # Drinkable
 item.skyrimmc.ale.name=Ale
 item.skyrimmc.skooma.name=Skooma
+
+# Ingredients
 item.skyrimmc.daedra_heart.name=Daedra Heart
+item.skyrimmc.ash_hopper_jelly.name=Ash Hopper Jelly
+item.skyrimmc.bear_claws.name=Bear Claws
+item.skyrimmc.blisterwort.name=Blisterwort
+item.skyrimmc.blue_butterfly_wing.name=Blue Butterfly Wing
+item.skyrimmc.blue_dartwing.name=Blue Dartwing
+item.skyrimmc.butterfly_wing.name=Butterfly Wing
+item.skyrimmc.canis_root.name=Canis Root
+item.skyrimmc.chaurus_eggs.name=Chaurus Eggs
+item.skyrimmc.emperor_parasol_moss.name=Emperor Parasol Moss
+item.skyrimmc.eye_of_sabre_cat.name=Eye Of Sabre Cat
+item.skyrimmc.fire_salts.name=Fire Salts
+item.skyrimmc.frost_salts.name=Frost Salts
+item.skyrimmc.gleamblossom.name=Gleamblossom
+item.skyrimmc.hagraven_claw.name=Hagraven Claw
+item.skyrimmc.hanging_moss.name=Hanging Moss
+item.skyrimmc.hawk_beak.name=Hawk Beak
+item.skyrimmc.jazbay_grapes.name=Jazbay Grapes
+item.skyrimmc.juniper_berries.name=Juniper Berries
+item.skyrimmc.mudcrab_chitin.name=Mudcrab Chitin
+item.skyrimmc.netch_jelly.name=Netch Jelly
+item.skyrimmc.orange_dartwing.name=Orange Dartwing
+item.skyrimmc.saber_cat_tooth.name=Saber Cat Tooth
+item.skyrimmc.salmon_roe.name=Salmon Roe
+item.skyrimmc.skeever_tail.name=Skeever Tail
+item.skyrimmc.slaughterfish_scales.name=Slaughterfish Scales
+item.skyrimmc.small_antlers.name=Small Antlers
+item.skyrimmc.snowberries.name=Snowberries
+item.skyrimmc.spawn_ash.name=Spawn Ash
+item.skyrimmc.torchbug_thorax.name=Torchbug Thorax
+item.skyrimmc.vampire_dust.name=Vampire Dust
+item.skyrimmc.void_salts.name=Void Salts
+
 item.skyrimmc.leather_strips.name=Leather Strips
 item.skyrimmc.mammoth_snout.name=Mammoth Snout
 

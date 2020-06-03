@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "skyrimmc:items/eye_of_sabre_cat"
+    }
+
+}

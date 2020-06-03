@@ -1,0 +1,24 @@
+if (event.getType() == RenderGameOverlayEvent.ElementType.CROSSHAIRS && mc.player.getHeldItemMainhand().getItem() instanceof ItemBow) {
+  //event.setCanceled(true);
+  event.setResult(Event.Result.Deny);
+  renderCrosshair(rescaledWidth, rescaledHeight);
+}
+
+overlay event ElementType.CROSSHAIR ->cancel that, drawo your own in the event.Pre
+
+
+renderOverlayEvent
+
+protected void renderCrosshairs(float partialTicks) {
+    if (pre(CROSSHAIRS)) return;
+    bind(Gui.ICONS);
+    GlStateManager.enableBlend();
+    super.renderAttackIndicator(partialTicks, res);
+    post(CROSSHAIRS);
+}
+
+fixed it - the issue was that i was trying to check for the event after I had arleady cancelled some others
+
+GlStateManager.enableBlend in renderCrosshair!
+
+nvm it was the fact im not drawing anything in renderCrosshair
