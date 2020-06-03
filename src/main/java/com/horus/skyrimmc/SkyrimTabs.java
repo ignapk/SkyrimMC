@@ -43,6 +43,13 @@ public class SkyrimTabs {
         }
     };
     
+//  public static final CreativeTabs SCROLLS = new CreativeTabs(SkyrimMC.MODID + ".scrolls") {
+//        @SideOnly(Side.CLIENT)
+//        public ItemStack createIcon() {
+//            return new ItemStack(ModItems.SCROLL);
+//        }
+//    };
+
 //    public static final CreativeTabs BOOKS = new CreativeTabs(SkyrimMC.MODID + ".books") {
 //        @SideOnly(Side.CLIENT)
 //        public ItemStack createIcon() {
