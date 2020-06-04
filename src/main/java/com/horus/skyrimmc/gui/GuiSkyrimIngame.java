@@ -59,8 +59,7 @@ public class GuiSkyrimIngame extends Gui
     
     @SubscribeEvent
     public void renderGameOverlay(final RenderGameOverlayEvent.Pre event) {
-    // \/ || event.getType() == RenderGameOverlayEvent.ElementType.EXPERIENCE
-        if (event.getType() == RenderGameOverlayEvent.ElementType.HEALTH || event.getType() == RenderGameOverlayEvent.ElementType.ARMOR || event.getType() == RenderGameOverlayEvent.ElementType.FOOD) {
+        if (event.getType() == RenderGameOverlayEvent.ElementType.HEALTH || event.getType() == RenderGameOverlayEvent.ElementType.ARMOR || event.getType() == RenderGameOverlayEvent.ElementType.FOOD || event.getType() == RenderGameOverlayEvent.ElementType.EXPERIENCE || event.getType() == RenderGameOverlayEvent.ElementType.AIR) {
             event.setCanceled(true);
         }
     }
