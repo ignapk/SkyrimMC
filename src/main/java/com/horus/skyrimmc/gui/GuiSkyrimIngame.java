@@ -77,7 +77,7 @@ public class GuiSkyrimIngame extends Gui
         GlStateManager.enableRescaleNormal();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(770, 771);
-        GlStateManager.depthMask(false);
+        GlStateManager.depthMask(true);
         this.mc.renderEngine.bindTexture(icons);
         this.drawTexturedModalRect(width / 2 - 110, 10, 0, 37, 221, 14);
         this.drawTexturedModalRect(20, height - 40, 0, 51, 102, 10);
