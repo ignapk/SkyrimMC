@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 @ObjectHolder(SkyrimMC.MODID)
 public class ModItems {
 
+	public static final Item GOLDEN_CLAW = null;
 	public static final Item CORUNDUM_INGOT = null;
 	public static final Item DWARVEN_METAL_INGOT = null;
 	public static final Item EBONY_INGOT = null;

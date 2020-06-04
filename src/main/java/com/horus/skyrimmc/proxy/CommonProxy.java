@@ -75,6 +75,7 @@ public class CommonProxy {
 	public static void registerItems(Register<Item> event) {
 		final Item[] items = {
 
+			new ItemSkyrim("golden_claw", 100),
 			new ItemSkyrim("corundum_ingot", 40),
 			new ItemSkyrim("dwarven_metal_ingot", 30),
 			new ItemSkyrim("ebony_ingot", 150),
