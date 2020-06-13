@@ -214,6 +214,7 @@ GlStateManager.rotate(15.0F, 0.0F, 0.0F, 1.0F);
 GlStateManager.rotate(195.0F, 1.0F, 0.0F, 0.0F);
 GlStateManager.rotate(spin++ % 360.0F, 0.0F, 1.0F, 0.0F);
 GlStateManager.scale(100.0F, 100.0F, 100.0F);
+GlStateManager.depthMask(false);
 RenderHelper.enableGUIStandardItemLighting();
 this.mc.getRenderItem().renderItem(is, TransformType.GROUND);
 GlStateManager.popMatrix();

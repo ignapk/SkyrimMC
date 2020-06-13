@@ -53,6 +53,7 @@ public class GuiSkyrimPlayerInventory extends GuiScreen
 
         GlStateManager.enableBlend();
         GlStateManager.enableDepth();
+        GlStateManager.depthMask(false);
         GlStateManager.disableLighting();
 
         //drawGradientRect(0, 0, this.width, this.height, 1156377062, 1155390941);

@@ -14,6 +14,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.GlStateManager;
 
 public class GuiMenuSelect extends GuiScreen
 {
@@ -38,6 +39,7 @@ public class GuiMenuSelect extends GuiScreen
     
     public void initGui() {
         this.buttonList.clear();
+        GlStateManager.depthMask(false);
     }
     
     protected void keyTyped(final char par1, final int par2) {
