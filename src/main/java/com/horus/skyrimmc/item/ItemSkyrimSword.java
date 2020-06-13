@@ -20,6 +20,7 @@ public class ItemSkyrimSword extends ItemSword implements IItem {
 		setRegistryName(SkyrimMC.MODID, name);
 		setTranslationKey(SkyrimMC.MODID + "." + name);
 		setCreativeTab(SkyrimTabs.WEAPONS);
+		setMaxDamage(0);
 	}
 
 	public ItemSkyrimSword(String name, ToolMaterial material, int price) {
