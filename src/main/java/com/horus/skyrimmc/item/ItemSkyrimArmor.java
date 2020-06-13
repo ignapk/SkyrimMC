@@ -14,6 +14,7 @@ public class ItemSkyrimArmor extends ItemArmor implements IItem {
 		setRegistryName(SkyrimMC.MODID, name);
 		setTranslationKey(SkyrimMC.MODID + "." + name);
 		setCreativeTab(SkyrimTabs.APPAREL);
+		setMaxDamage(0);
 	}
 
 	public ItemSkyrimArmor(String name, ArmorMaterial material, EntityEquipmentSlot equipmentSlot, int price) {
