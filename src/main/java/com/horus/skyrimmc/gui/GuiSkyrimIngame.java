@@ -5,6 +5,7 @@
 package com.horus.skyrimmc.gui;
 
 import com.horus.skyrimmc.util.playerdata.IGold;
+import com.horus.skyrimmc.util.playerdata.IStorage;
 import com.horus.skyrimmc.SkyrimMC;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.EnumFacing;
@@ -73,6 +74,7 @@ public class GuiSkyrimIngame extends Gui
         final int height = event.getResolution().getScaledHeight();
         final FontRenderer fontrenderer = this.mc.fontRenderer;
         final ResourceLocation icons = new ResourceLocation("skyrimmc", "textures/gui/icons.png");
+        IStorage storage = this.mc.player.getCapability(SkyrimMC.STORAGE_CAP, null);
         GlStateManager.disableLighting();
         GlStateManager.enableRescaleNormal();
         GlStateManager.enableBlend();
@@ -80,19 +82,33 @@ public class GuiSkyrimIngame extends Gui
         GlStateManager.depthMask(true);
         this.mc.renderEngine.bindTexture(icons);
         this.drawTexturedModalRect(width / 2 - 110, 10, 0, 37, 221, 14);
+        //magicka
+        if (!storage.isMagikaFull())
         this.drawTexturedModalRect(20, height - 40, 0, 51, 102, 10);
+        //health
+        if (this.mc.player.getHealth() < this.mc.player.getMaxHealth())
         this.drawTexturedModalRect(width / 2 - 50, height - 40, 0, 51, 102, 10);
+        //stamina
+        if (!storage.isStaminaFull())
         this.drawTexturedModalRect(width - 120, height - 40, 0, 51, 102, 10);
         final float magicka = 82.0f;
         final float health = (float)(this.mc.player.getHealth() * 4.1);
         final float stamina = (float)(this.mc.player.getFoodStats().getFoodLevel() / 20);
         final float barMaxWidth = 80.0f;
+        final float magickaBarWidth = barMaxWidth * ((float)storage.getMagika() / (float)storage.getMaxMagika());
+        final float magickaBarStartX = 31 + (barMaxWidth - magickaBarWidth) / 2.0f;
         final float healthBarWidth = barMaxWidth * (this.mc.player.getHealth() / this.mc.player.getMaxHealth());
         final float healthBarStartX = width / 2 - 39 + (barMaxWidth - healthBarWidth) / 2.0f;
-        final float staminaBarWidth = barMaxWidth * (this.mc.player.getFoodStats().getFoodLevel() / 20);
-        final float staminaBarStartX = width - 109 + (barMaxWidth - staminaBarWidth);
-        this.drawTexturedModalRect(31, height - 38, 11, 64, (int)magicka, 6);
+        final float staminaBarWidth = barMaxWidth * ((float)storage.getStamina() / (float)storage.getMaxStamina());
+        final float staminaBarStartX = width - 109 + (barMaxWidth - staminaBarWidth) / 2.0f;
+        //magicka
+        if (!storage.isMagikaFull())
+        this.drawTexturedModalRect(magickaBarStartX, height - 38, 11, 64, (int)magickaBarWidth, 6);
+        //health
+        if (this.mc.player.getHealth() < this.mc.player.getMaxHealth())
         this.drawTexturedModalRect(healthBarStartX, (float)(height - 38), 11, 72, (int)healthBarWidth, 6);
+        //stamina
+        if (!storage.isStaminaFull())
         this.drawTexturedModalRect(staminaBarStartX, (float)(height - 38), 11, 80, (int)staminaBarWidth, 6);
         final int exp = (int)(this.mc.player.experience * 183.0f);
         int r = 0;

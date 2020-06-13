@@ -11,6 +11,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import com.horus.skyrimmc.SkyrimMC;
 import net.minecraft.nbt.NBTPrimitive;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -36,6 +37,25 @@ public class PlayerConstruction
             
             public void deserializeNBT(final NBTPrimitive nbt) {
                 SkyrimMC.GOLD_CAP.getStorage().readNBT((Capability)SkyrimMC.GOLD_CAP, this.instance, (EnumFacing)null, (NBTBase)nbt);
+            }
+        });
+        event.addCapability(new ResourceLocation("skyrimmc", "IStorage"), (ICapabilityProvider)new ICapabilitySerializable<NBTTagCompound>() {
+            private IStorage instance = (IStorage)SkyrimMC.STORAGE_CAP.getDefaultInstance();
+
+            public boolean hasCapability(final Capability<?> capability, final EnumFacing facing) {
+                return capability == SkyrimMC.STORAGE_CAP;
+            }
+
+            public <T> T getCapability(final Capability<T> capability, final EnumFacing facing) {
+                return hasCapability(capability, facing) ? SkyrimMC.STORAGE_CAP.cast(this.instance) : null;
+            }
+
+            public NBTTagCompound serializeNBT() {
+                return (NBTTagCompound) SkyrimMC.STORAGE_CAP.getStorage().writeNBT(SkyrimMC.STORAGE_CAP, this.instance, null);
+            }
+
+            public void deserializeNBT(NBTTagCompound nbt) {
+                SkyrimMC.STORAGE_CAP.getStorage().readNBT(SkyrimMC.STORAGE_CAP, this.instance, null, nbt);
             }
         });
     }

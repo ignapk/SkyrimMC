@@ -4,6 +4,7 @@ package com.horus.skyrimmc;
 import com.horus.skyrimmc.recipes.ModRecipes;
 import com.horus.skyrimmc.proxy.CommonProxy;
 import com.horus.skyrimmc.util.playerdata.IGold;
+import com.horus.skyrimmc.util.playerdata.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Mod;
@@ -31,6 +32,9 @@ public class SkyrimMC {
     @CapabilityInject(IGold.class)
     public static final Capability<IGold> GOLD_CAP;
     
+    @CapabilityInject(IStorage.class)
+    public static final Capability<IStorage> STORAGE_CAP;
+    
     public static SimpleNetworkWrapper SNW_INSTANCE;
 
     @Mod.EventHandler
@@ -51,5 +55,6 @@ public class SkyrimMC {
     
     static {
         GOLD_CAP = null;
+        STORAGE_CAP = null;
     }
 }

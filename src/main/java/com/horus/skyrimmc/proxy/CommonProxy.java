@@ -22,11 +22,15 @@ import com.horus.skyrimmc.networking.PacketGoldServer;
 import com.horus.skyrimmc.gui.GuiHandler;
 import com.horus.skyrimmc.util.playerdata.PlayerConstruction;
 import com.horus.skyrimmc.util.playerdata.GoldImplementation;
+import com.horus.skyrimmc.util.playerdata.Storage;
 import com.horus.skyrimmc.util.playerdata.GoldStorage;
+import com.horus.skyrimmc.util.playerdata.StorageHandler;
 import com.horus.skyrimmc.util.playerdata.IGold;
+import com.horus.skyrimmc.util.playerdata.IStorage;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -39,6 +43,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -55,6 +60,7 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         CapabilityManager.INSTANCE.register((Class)IGold.class, (Capability.IStorage)new GoldStorage(), (Class)GoldImplementation.class);
+        CapabilityManager.INSTANCE.register(IStorage.class, new StorageHandler(), Storage.class);
         MinecraftForge.EVENT_BUS.register((Object)new PlayerConstruction());
     
     }
@@ -281,5 +287,74 @@ public class CommonProxy {
 	    player.sendMessage(new TextComponentString("Hello there. You've made 1 gold since your last visit. Your gold: " + String.valueOf(gold.getGold())));
 	    SkyrimMC.SNW_INSTANCE.sendTo(new PacketGold(player), (EntityPlayerMP)player);
 	}
+	
+	@SubscribeEvent
+    public static void livingUpdate(LivingEvent.LivingUpdateEvent event) {
+            Minecraft mc = Minecraft.getMinecraft();
+        if (event.getEntity() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.getEntity();
+            IStorage storage = player.getCapability(SkyrimMC.STORAGE_CAP, null);
+//System.out.println("Magika:" + storage.getMagika() + ", max: " + storage.getMaxMagika() + ", stamina:" + storage.getStamina() + ", max: " + storage.getMaxStamina() + ", health: " + player.getHealth() + ", max: " + player.getMaxHealth());
+            // Keep player at 8 food so player does not die or regen health and can still sprint
+            // I will need a new foodstats class later.
+            player.getFoodStats().setFoodLevel(8);
+
+            // Update position
+            storage.setPosition(player);
+
+            // Do these every 5 ticks
+            if (storage.getCurrentTick() % 5 == 0) {
+
+                // Remove stamina if sprinting
+                if (player.isSprinting()) {
+                    if (storage.getStamina() >= 1) {
+                        storage.removeStamina(1);
+                    } else {
+                        if (!player.getEntityWorld().isRemote)
+                            KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), false);
+                        player.setSprinting(false);
+                    }
+                }
+            }
+
+            // Do these every 20 ticks (getResetTick is set to 20 in Storage.java)
+            if (storage.getCurrentTick() == storage.getResetTick()) {
+                // reset the counter
+                storage.resetCounter();
+
+                // add magika
+                if (storage.getMagika() < storage.getMaxMagika())
+                    storage.addMagika((float) 0.5);
+
+                // add stamina
+                if (storage.getStamina() < storage.getMaxStamina() && !player.isSprinting()) {
+                    if (storage.isMoving()) { // add 1 if moving
+                        storage.addStamina(1);
+                    } else { // else or if standing still, add 2
+                        storage.addStamina(2);
+                    }
+                }
+            }
+
+            // increment counter every tick
+            storage.incrementCounter();
+        }
+    }
+    
+    @SubscribeEvent
+    public static void livingJump(LivingEvent.LivingJumpEvent event) {
+        if (event.getEntity() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.getEntity();
+
+            IStorage storage = player.getCapability(SkyrimMC.STORAGE_CAP, null);
+
+            // Remove 2 stamina every jump
+            if (storage.getStamina() <= 2) {
+                player.motionY = 0;
+            } else {
+                storage.removeStamina(2);
+            }
+        }
+    }
 
 }
