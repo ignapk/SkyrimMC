@@ -53,7 +53,7 @@ return false;
 }
 // default SOLID, decides whether things like buttons are allowed to be place on it, or how glass panes connect etc
 public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-return BlockFaceShape.UNDEFINED;
+return BlockFaceShape.SOLID;
 }
 public boolean isOpaqueCube(final IBlockState state) {
 return false;
