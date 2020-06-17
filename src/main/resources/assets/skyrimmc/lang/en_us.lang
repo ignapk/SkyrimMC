@@ -13,9 +13,13 @@ itemGroup.skyrimmc.ingredients=INGREDIENTS
 itemGroup.skyrimmc.books=BOOKS
 itemGroup.skyrimmc.keys=KEYS
 itemGroup.skyrimmc.misc=MISC
+itemGroup.skyrimmc.spells=SPELLS
 
 # Entities
 #entity.skyrimmc.skyrimFox.name=Fox
+
+# Spells
+item.skyrimmc.heal_spell.name=Heal Spell
 
 # Blocks
 #tile.skyrimcraft:shoutWallEmpty.name=Shout Wall (Empty)

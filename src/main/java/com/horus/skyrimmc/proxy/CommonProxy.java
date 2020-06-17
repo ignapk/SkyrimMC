@@ -15,6 +15,7 @@ import com.horus.skyrimmc.item.ItemSkyrimGreatsword;
 import com.horus.skyrimmc.item.ItemSkyrimConsumable;
 import com.horus.skyrimmc.item.ItemSkyrimDrinkable;
 import com.horus.skyrimmc.item.ItemSkyrimIngredient;
+import com.horus.skyrimmc.item.spell.HealSpell;
 import com.horus.skyrimmc.materials.SkyrimMaterials;
 import com.horus.skyrimmc.networking.PacketGold;
 import com.horus.skyrimmc.networking.PacketMyAss;
@@ -81,6 +82,8 @@ public class CommonProxy {
 	public static void registerItems(Register<Item> event) {
 		final Item[] items = {
 
+            new HealSpell("heal_spell", (float) 0.5),                    
+            
 			new ItemSkyrim("golden_claw", 100),
 			new ItemSkyrim("corundum_ingot", 40),
 			new ItemSkyrim("dwarven_metal_ingot", 30),

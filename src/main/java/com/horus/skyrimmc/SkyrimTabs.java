@@ -71,4 +71,11 @@ public class SkyrimTabs {
         }
     };
 
+    public static final CreativeTabs SPELLS = new CreativeTabs(SkyrimMC.MODID + ".spells") {
+        @SideOnly(Side.CLIENT)
+        public ItemStack createIcon() {
+            return new ItemStack(ModItems.HEAL_SPELL);
+        }
+    };
+
 }
