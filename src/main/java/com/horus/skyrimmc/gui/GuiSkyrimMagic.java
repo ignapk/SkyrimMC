@@ -114,6 +114,9 @@ public class GuiSkyrimMagic extends GuiScreen
         if (keyCode == 1 || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
             this.mc.player.closeScreen();
 
+        if (keyCode == Keyboard.KEY_RETURN)
+            this.mc.player.inventory.setPickedItemStack(this.currentItemStacks.get(this.itemIndex));
+
         if (keyCode == Keyboard.KEY_UP) {
             if(categorySelected) {
                 if (itemIndex <= 0)
