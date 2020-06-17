@@ -10,6 +10,6 @@ public class SpellBase extends Item {
     public SpellBase(String name) {
         setRegistryName(SkyrimMC.MODID, name);
         setTranslationKey(SkyrimMC.MODID + "." + name);
-        setCreativeTab(SkyrimTabs.SPELLS);
+        setCreativeTab(SkyrimTabs.RESTORATION);
     }
 }

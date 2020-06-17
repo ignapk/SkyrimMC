@@ -13,7 +13,7 @@ itemGroup.skyrimmc.ingredients=INGREDIENTS
 itemGroup.skyrimmc.books=BOOKS
 itemGroup.skyrimmc.keys=KEYS
 itemGroup.skyrimmc.misc=MISC
-itemGroup.skyrimmc.spells=SPELLS
+itemGroup.skyrimmc.restoration=RESTORATION
 
 # Entities
 #entity.skyrimmc.skyrimFox.name=Fox

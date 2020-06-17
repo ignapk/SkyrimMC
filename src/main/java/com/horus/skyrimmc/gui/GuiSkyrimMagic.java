@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 
 // TODO: Fix inventory...
-public class GuiSkyrimPlayerInventory extends GuiScreen
+public class GuiSkyrimMagic extends GuiScreen
 {
     private List<ItemStack> allItems;
     private LinkedHashMap<String, List<ItemStack>> inventory;
@@ -33,7 +33,7 @@ public class GuiSkyrimPlayerInventory extends GuiScreen
 
     private float spin = 0.0F;
 
-    public GuiSkyrimPlayerInventory(EntityPlayer player) {
+    public GuiSkyrimMagic(EntityPlayer player) {
         this.player = player;
 
         categorySelected = false;
@@ -60,14 +60,14 @@ public class GuiSkyrimPlayerInventory extends GuiScreen
         drawDefaultBackground();
 
         // Draw Categories "panel"
-        drawGradientRect(10, 0, 110, height, !categorySelected ? -1442840576 : INACTIVE_PANEL_COLOR, !categorySelected ? -1437248171 : INACTIVE_PANEL_COLOR); // Panel background
-        drawRect(12, 0, 13, height, 0xAAFFFFFF); // Panel right border
-        drawRect(107, 0, 108, height, 0xAAFFFFFF); // Panel left border
+        drawGradientRect(width-110, 0, width-10, height, !categorySelected ? -1442840576 : INACTIVE_PANEL_COLOR, !categorySelected ? -1437248171 : INACTIVE_PANEL_COLOR); // Panel background
+        drawRect(width-12, 0, width-13, height, 0xAAFFFFFF); // Panel right border
+        drawRect(width-107, 0, width-108, height, 0xAAFFFFFF); // Panel left border
 
         // Draw Items "panel"
-        drawGradientRect(130, 0, 230, height, categorySelected ? -1442840576 : INACTIVE_PANEL_COLOR, categorySelected ? -1437248171 : INACTIVE_PANEL_COLOR); // Panel background
-        drawRect(132, 0, 133, height, 0xAAFFFFFF); // Panel right border
-        drawRect(227, 0, 228, height, 0xAAFFFFFF); // Panel left border
+        drawGradientRect(width-230, 0, width-130, height, categorySelected ? -1442840576 : INACTIVE_PANEL_COLOR, categorySelected ? -1437248171 : INACTIVE_PANEL_COLOR); // Panel background
+        drawRect(width-132, 0, width-133, height, 0xAAFFFFFF); // Panel right border
+        drawRect(width-227, 0, width-228, height, 0xAAFFFFFF); // Panel left border
 
         // Write categories
         int y = 0;
@@ -77,9 +77,9 @@ public class GuiSkyrimPlayerInventory extends GuiScreen
             }
 
             if(y/20 == categoryIndex)
-                drawString(fontRenderer, TextFormatting.BOLD + key + TextFormatting.RESET, 20, height / 2 + y - (categoryIndex * 20), 0xAAFFFFFF);
+                drawString(fontRenderer, TextFormatting.BOLD + key + TextFormatting.RESET, width-100, height / 2 + y - (categoryIndex * 20), 0xAAFFFFFF);
             else
-                drawString(fontRenderer, key, 20, height / 2 + y - (categoryIndex * 20), 0xAAAAAAAA);
+                drawString(fontRenderer, key, width-100, height / 2 + y - (categoryIndex * 20), 0xAAAAAAAA);
 
             y += 20;
         }
@@ -95,14 +95,14 @@ public class GuiSkyrimPlayerInventory extends GuiScreen
             }
 
             if(i == itemIndex) {
-                drawString(fontRenderer, TextFormatting.BOLD + displayName + TextFormatting.RESET, 140, height / 2 + (i * 20) - (itemIndex * 20), 0xAAFFFFFF);
+                drawString(fontRenderer, TextFormatting.BOLD + displayName + TextFormatting.RESET, width-220, height / 2 + (i * 20) - (itemIndex * 20), 0xAAFFFFFF);
                 GlStateManager.scale(1.0f, 1.0f, -1.0f);
-                drawItemImage(is, width - 100, height / 2 - 40, spin);
+                drawItemImage(is, 100, height / 2 - 40, spin);
                 //GlStateManager.scale(-120.0f, -120.0f, -120.0f);
                 GlStateManager.scale(1.0f, 1.0f, 1.0f);
                 drawItemInformation("", is);
             } else
-                drawString(fontRenderer, displayName, 140, height / 2 + (i * 20) - (itemIndex * 20), 0xAAAAAAAA);
+                drawString(fontRenderer, displayName, width-220, height / 2 + (i * 20) - (itemIndex * 20), 0xAAAAAAAA);
         }
     }
 
@@ -141,13 +141,13 @@ public class GuiSkyrimPlayerInventory extends GuiScreen
             }
         }
 
-        if(keyCode == Keyboard.KEY_LEFT) {
+        if(keyCode == Keyboard.KEY_RIGHT) {
             if (categorySelected)
                 categorySelected = false;
 
             itemIndex = 0;
         }
-        if (keyCode == Keyboard.KEY_RIGHT) {
+        if (keyCode == Keyboard.KEY_LEFT) {
             if (!categorySelected)
                 categorySelected = true;
 
@@ -190,7 +190,7 @@ private void updateInventory() {
     for (ItemStack stack : allItems) {
         List<String> tabs = getTabsFromItem(stack);
         for(String tab : tabs) {
-            if (!tab.matches("ALTERATION|CONJURATION|DESTRUCTION|ENCHANTING|ILLUSION|RESTORATION")) {
+            if (tab.matches("ALTERATION|CONJURATION|DESTRUCTION|ENCHANTING|ILLUSION|RESTORATION")) {
             inventory.computeIfAbsent(tab, k -> new ArrayList<>()).add(stack);
                 inventory.get("ALL").add(stack);
             }
@@ -220,12 +220,12 @@ private void updateInventory() {
     }
 
     private void drawItemInformation(String category, ItemStack is) {
-        drawRect(this.width - 180, (this.height + 50) / 2, this.width - 20, (this.height + 50) / 2 + 80, -1442840576);
-        this.drawHorizontalLine(this.width - 178, this.width - 22, (this.height + 50) / 2 + 2, -1);
-        this.drawHorizontalLine(this.width - 178, this.width - 22, (this.height + 50) / 2 + 77, -1);
-        this.drawVerticalLine(this.width - 178, (this.height + 50) / 2 + 77, (this.height + 50) / 2 + 2, -1);
-        this.drawVerticalLine(this.width - 22, (this.height + 50) / 2 + 77, (this.height + 50) / 2 + 2, -1);
-        this.drawCenteredString(fontRenderer, is.getDisplayName(), this.width - 100, (this.height + 50) / 2 + 8, -1);
-        this.drawHorizontalLine(this.width - 170, this.width - 30, (this.height + 50) / 2 + 20, -1);
+        drawRect(180, (this.height + 50) / 2, 20, (this.height + 50) / 2 + 80, -1442840576);
+        this.drawHorizontalLine(178, 22, (this.height + 50) / 2 + 2, -1);
+        this.drawHorizontalLine(178, 22, (this.height + 50) / 2 + 77, -1);
+        this.drawVerticalLine(178, (this.height + 50) / 2 + 77, (this.height + 50) / 2 + 2, -1);
+        this.drawVerticalLine(22, (this.height + 50) / 2 + 77, (this.height + 50) / 2 + 2, -1);
+        this.drawCenteredString(fontRenderer, is.getDisplayName(), 100, (this.height + 50) / 2 + 8, -1);
+        this.drawHorizontalLine(170, 30, (this.height + 50) / 2 + 20, -1);
     }
 }
