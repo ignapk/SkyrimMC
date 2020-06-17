@@ -159,4 +159,5 @@ public class ModItems {
 	public static final Item STORMCLOAK1_CHESTPLATE = null;
 
 	public static final Item HEAL_SPELL = null;
+	public static final Item FIREBOLT = null;
 }

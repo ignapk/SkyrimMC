@@ -11,7 +11,7 @@ public class DamageSpellBase extends ItemSnowball {
     public DamageSpellBase(String name, int damage) {
         setRegistryName(SkyrimMC.MODID, name);
         setTranslationKey(SkyrimMC.MODID + "." + name);
-        setCreativeTab(SkyrimTabs.MISC);
+        setCreativeTab(SkyrimTabs.DESTRUCTION);
 
         setMaxDamage(damage);
     }

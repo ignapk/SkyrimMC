@@ -14,12 +14,14 @@ itemGroup.skyrimmc.books=BOOKS
 itemGroup.skyrimmc.keys=KEYS
 itemGroup.skyrimmc.misc=MISC
 itemGroup.skyrimmc.restoration=RESTORATION
+itemGroup.skyrimmc.destruction=DESTRUCTION
 
 # Entities
 #entity.skyrimmc.skyrimFox.name=Fox
 
 # Spells
 item.skyrimmc.heal_spell.name=Heal Spell
+item.skyrimmc.firebolt.name=Firebolt
 
 # Blocks
 #tile.skyrimcraft:shoutWallEmpty.name=Shout Wall (Empty)

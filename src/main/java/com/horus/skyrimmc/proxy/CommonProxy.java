@@ -16,6 +16,7 @@ import com.horus.skyrimmc.item.ItemSkyrimConsumable;
 import com.horus.skyrimmc.item.ItemSkyrimDrinkable;
 import com.horus.skyrimmc.item.ItemSkyrimIngredient;
 import com.horus.skyrimmc.item.spell.HealSpell;
+import com.horus.skyrimmc.item.spell.DamageSpellBase;
 import com.horus.skyrimmc.materials.SkyrimMaterials;
 import com.horus.skyrimmc.networking.PacketGold;
 import com.horus.skyrimmc.networking.PacketMyAss;
@@ -83,6 +84,7 @@ public class CommonProxy {
 		final Item[] items = {
 
             new HealSpell("heal_spell", (float) 0.5),                    
+            new DamageSpellBase("firebolt", 100),
             
 			new ItemSkyrim("golden_claw", 100),
 			new ItemSkyrim("corundum_ingot", 40),

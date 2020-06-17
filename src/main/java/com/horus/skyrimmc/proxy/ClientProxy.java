@@ -42,6 +42,7 @@ public class ClientProxy extends CommonProxy {
 	public static void registerModels(ModelRegistryEvent event) {
 	
 	    registerModel(ModItems.HEAL_SPELL, 0);
+	    registerModel(ModItems.FIREBOLT, 0);
 		registerModel(ModItems.GOLDEN_CLAW, 0);
 		registerModel(ModItems.CORUNDUM_INGOT, 0);
 		registerModel(ModItems.DWARVEN_METAL_INGOT, 0);

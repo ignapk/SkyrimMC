@@ -71,6 +71,13 @@ public class SkyrimTabs {
         }
     };
 
+    public static final CreativeTabs DESTRUCTION = new CreativeTabs(SkyrimMC.MODID + ".destruction") {
+        @SideOnly(Side.CLIENT)
+        public ItemStack createIcon() {
+            return new ItemStack(ModItems.FIREBOLT);
+        }
+    };
+
     public static final CreativeTabs RESTORATION = new CreativeTabs(SkyrimMC.MODID + ".restoration") {
         @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {
