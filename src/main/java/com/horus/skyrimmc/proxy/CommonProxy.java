@@ -7,6 +7,7 @@ import com.horus.skyrimmc.block.BlockSkyrimGrindstone;
 import com.horus.skyrimmc.block.BlockSkyrimSmelter;
 import com.horus.skyrimmc.block.BlockSkyrimTanningRack;
 import com.horus.skyrimmc.block.BlockSkyrimWorkbench;
+import com.horus.skyrimmc.entity.projectile.EntityFirebolt;
 import com.horus.skyrimmc.init.ModBlocks;
 import com.horus.skyrimmc.item.ItemSkyrim;
 import com.horus.skyrimmc.item.ItemSkyrimArmor;
@@ -33,6 +34,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -41,6 +43,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -55,6 +58,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.client.event.ClientChatEvent;
 
 @EventBusSubscriber(modid = SkyrimMC.MODID)
@@ -283,6 +288,17 @@ public class CommonProxy {
 
 		event.getRegistry().registerAll(blocks);
 	}
+
+    @SubscribeEvent
+    public static void registerEntities(Register<EntityEntry> event) {
+        EntityEntry entry = EntityEntryBuilder.create()
+                .entity(EntityFirebolt.class)
+                .id(new ResourceLocation(SkyrimMC.MODID, "firebolt"), 0)
+                .name("firebolt")
+                .tracker(64, 20, true)
+                .build();
+        event.getRegistry().register(entry);
+    }
 	
 	@SubscribeEvent
 	public static void onPlayerLogsIn(PlayerLoggedInEvent event) {
